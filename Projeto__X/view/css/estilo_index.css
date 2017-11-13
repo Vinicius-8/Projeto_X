@@ -1,0 +1,36 @@
+* {
+    width: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    font-family: sans-serif;
+    background-color: #303;
+}
+
+button {
+    width: auto;
+    font-size: 13pt;
+    background-color: transparent;
+    border: none;
+    margin: 20px;
+    cursor: pointer;
+    background-color: red;
+    padding: 20px;
+    margin-top: 300px;
+    color: wheat;
+    border-radius: 8px;
+}
+
+
+div#cent {
+    float: none;
+    height: 200px;
+    width: 480px;
+    margin: 0 auto;
+    background-color: transparent;
+    cursor: auto;
+}
