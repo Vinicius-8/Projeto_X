@@ -1,0 +1,42 @@
+body {
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    font-family: sans-serif;
+    background-color: #303;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    font-family: sans-serif;
+    background-color: gray;
+}
+
+
+div {
+    margin: 0 auto;
+    width: 300px;
+    height: auto;
+    background-color: gainsboro;
+    align-content: center;
+}
+
+input {
+    width: 100px;
+    margin-bottom: 5px;
+    margin-top: 8px;
+}
+
+input.radio {
+    margin: 0;
+    margin-left: 20px;
+    width: auto;
+
+}
+
+h3 {
+    margin-left: 60px;
+    padding-top: 15px;
+}
