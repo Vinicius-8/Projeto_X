@@ -1,36 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand');
+
 * {
     width: 0;
     padding: 0;
 }
 
+header {
+    height: 20px;
+    width: 100%;
+    padding: 40px;
+    padding-left: 750px;
+}
+
+.topheader{
+    color: white;
+    text-decoration: none;
+    display: inline;
+    margin: 20px;
+}
+
 body {
     margin: 0 auto;
     width: 100%;
+    height: 100%;
     position: absolute;
     font-family: sans-serif;
-    background-color: #303;
+    background-image: url(../imagens/back.jpg);
 }
 
 button {
-    width: auto;
-    font-size: 13pt;
+    width: 300px;
+    display: block;
+    font-size: 14pt;
+    font-family: 'Quicksand', sans-serif;
     background-color: transparent;
-    border: none;
+    border: 5px white solid;
+    border-radius: 8px;    
     margin: 20px;
-    cursor: pointer;
-    background-color: red;
-    padding: 20px;
-    margin-top: 300px;
-    color: wheat;
-    border-radius: 8px;
+    margin-left: 230px;
+    padding: 30px;
+    color: white;
+    cursor: pointer;  
+}
+
+#cursos {
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+a {
+    text-decoration: none;
 }
 
 
 div#cent {
-    float: none;
     height: 200px;
     width: 480px;
-    margin: 0 auto;
-    background-color: transparent;
-    cursor: auto;
 }
