@@ -10,6 +10,7 @@ header {
     width: 100%;
     padding: 40px;
     padding-left: 750px;
+    position: fixed;
 }
 
 .topheader{
@@ -25,7 +26,8 @@ body {
     height: 100%;
     position: absolute;
     font-family: sans-serif;
-    background-image: url(../imagens/back.jpg);
+    background-image: url(../imagens/cafee.jpg);
+    background-repeat: no-repeat;
 }
 
 button {
@@ -44,16 +46,17 @@ button {
 }
 
 #cursos {
-    margin-top: 100px;
+    margin-top: 200px;
     margin-bottom: 60px;
 }
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 
 div#cent {
     height: 200px;
-    width: 480px;
+    width: 100%;
 }
