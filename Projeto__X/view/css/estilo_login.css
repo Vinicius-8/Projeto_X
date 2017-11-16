@@ -1,9 +1,6 @@
-body {
-    margin: 0 auto;
-    width: 100%;
-    position: absolute;
-    font-family: sans-serif;
-    background-color: #303;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -12,31 +9,50 @@ body {
     position: absolute;
     font-family: sans-serif;
     background-color: gray;
+
 }
 
-
-div {
+div#log {
+    color: whitesmoke;
+    width: 250px;
+    height: 250px;
+    background-color: #4e4e4e;
     margin: 0 auto;
-    width: 300px;
-    height: auto;
-    background-color: gainsboro;
-    align-content: center;
-}
-
-input {
-    width: 100px;
-    margin-bottom: 5px;
-    margin-top: 8px;
-}
-
-input.radio {
-    margin: 0;
-    margin-left: 20px;
-    width: auto;
+    margin-top: 50px;
 
 }
 
-h3 {
-    margin-left: 60px;
-    padding-top: 15px;
+div h3 {
+    position: relative;
+    margin-left: 50px;
+    top: 57px;
+
+}
+
+div input {
+    margin-left: 50px;
+    top: 49px;
+    position: relative;
+
+}
+
+div #sub {
+    padding: 5px;
+    font-size: 15pt;
+    position: relative;
+    margin-top: 5px;
+    right: 40px;
+    float: right;
+
+}
+
+div a {
+    color: whitesmoke;
+    text-decoration: none;
+
+
+}
+
+div a:hover {
+    color: burlywood;
 }

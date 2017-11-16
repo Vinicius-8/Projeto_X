@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Cadastro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo_cadastro.css">
+    <script>
+        function enviar() {
+            s1 = document.getElementById("s1").value;
+            s2 = document.getElementById("s2").value;
+            form = document.getElementById("form");
+
+            if (s1 !== s2) {
+                alert("senhas discrepantes");
+                document.getElementById("s1").value = "";
+                document.getElementById("s2").value = "";
+                document.getElementById("s1").focus();
+                return false;
+
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div>
+        <h3>Cadastro</h3>
+        <hr>
+        <form action="../controller/Formulario.php" method="post" onsubmit="return enviar()" id="form">
+
+            <input type="radio" name="tipo" class="radio" value="0" required> Aluno
+            <input type="radio" name="tipo" class="radio" value="1"> Professor
+            <hr>
+
+            <blockquote>
+
+                Nome: <br>
+                <input type="text" name="nome" required placeholder="Nome">
+
+                <br> Sobrenome:
+                <br>
+                <input type="text" name="sobrenome" required placeholder="sobrenome">
+
+                <br> cpf:
+                <br> <input type="number" name="cpf" required placeholder="CPF">
+
+                <br> Data de Nascimento:
+                <br>
+                <input type="number" name="nasc" required placeholder="dia/mes/ano"><br> E-mail:
+                <br>
+                <input type="email" name="email" required placeholder="Digite seu email">
+
+                <br> telefone:
+                <br><input type="number" name="telefone" required placeholder="Telefone">
+
+                <br>senha: (8 carateres no mínimo)
+                <br><input type="password" name="senha" placeholder="senha" pattern=".{8,}" id='s1' required>
+
+                <br> confirmação da senha:
+                <br><input type="password" name="senha2" placeholder="senha" pattern=".{8,}" id="s2" required>
+                <br><br>
+
+                <input type="submit" value="Cadastrar">
+            </blockquote>
+        </form>
+    </div>
+</body>
+
+</html>
