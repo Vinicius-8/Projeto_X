@@ -11,7 +11,7 @@ if (isset($_POST)) {
     
     for($i=0;$i<count($cpfs);$i++){    
         if ($cpfs[$i]['cpf'] == $cpf) {
-            echo "<script>alert('CPF já Cadastrado!');</script>";
+            echo "<script>alert('CPF já cadastrado!');</script>";
             sleep(1);
             echo '<script>
             window.location.href = "../view/cadastro.html";</script>';
