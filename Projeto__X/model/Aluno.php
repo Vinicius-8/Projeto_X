@@ -32,7 +32,7 @@ class Aluno {
         $this->id = $id;
     }
     
-    public function getVetorAluno() {
+    public function getVetor() {
         return array('id'=> $this->id,'nome'=> $this->nome,
                     'sobrenome'=> $this->sobrenome,
                     'data_nasc'=> $this->nasc,

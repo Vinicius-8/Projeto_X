@@ -1,15 +1,17 @@
 <?php
 
 if (isset($_POST)) {
-    var_dump($_POST);
     require '../include/Config.inc.php';
     //verificar se o id  já está cadastrado
     $id = (string) strtolower($_POST['id']);
     $read = new Read();
 
     $read->ExecutarRead('aluno',"where id ='{$id}'");
-    $consulta = $read->getResultado();
-    if (!empty($consulta)){ 
+    $consulta_aluno = $read->getResultado();
+    $read->ExecutarRead('professor',"where id ='{$id}'");
+    $consulta_prof = $read->getResultado();
+    
+    if (!empty($consulta_aluno) or !empty($consulta_prof)){ 
         echo "<script>alert('Esse id já foi cadastrado!!');</script>";
         echo '<script> window.location.href = "../view/cadastro.html";</script>';
     }
@@ -48,20 +50,27 @@ if (isset($_POST)) {
 
     
     
+    //objeto create
+    $create = new Create();
     
-
     //Condicional de [1]Aluno/[2]Professor
     if ($tipo) {
         //Criação do objeto aluno para implementar na insersão do banco de dados
         $aluno = new Aluno($id, $nome, $sobrenome, $nasc, $email, $telefone, md5($senha));
-        //objeto create
-        $create = new Create();
-        //inserção dos dados no banco de dados (ah vá)
-        $create->ExecutarCreate('projeto_x.aluno', $aluno->getVetorAluno());
         
-        echo "Usuário cadastrado com sucesso";
+
+        
+        $create->ExecutarCreate('projeto_x.aluno', $aluno->getVetor());
+        
+        echo "Aluno cadastrado com sucesso";
     }else{
-        //professor
+        //Criação do objeto Professpr para implementar na insersão do banco de dados
+        $prof = new Professor($id, $nome, $sobrenome, $nasc, $email, $telefone, md5($senha));
+        
+        //inserção dos dados no banco de dados (ah vá)
+        $create->ExecutarCreate('projeto_x.professor', $prof->getVetor());
+        
+        echo "Professor cadastrado com sucesso";
     }
     
     

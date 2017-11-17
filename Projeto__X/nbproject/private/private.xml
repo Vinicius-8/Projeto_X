@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Projeto_X/Projeto__X/view/css/estilo_login.css</file>
-            <file>file:/C:/xampp/htdocs/Projeto_X/Projeto__X/view/login.html</file>
-            <file>file:/C:/xampp/htdocs/Projeto_X/Projeto__X/view/cadastro.html</file>
-            <file>file:/C:/xampp/htdocs/Projeto_X/Projeto__X/controller/Formulario.php</file>
+            <file>file:/C:/wamp64/www/Projeto_X/Projeto__X/view/cadastro.html</file>
+            <file>file:/C:/wamp64/www/Projeto_X/Projeto__X/controller/Formulario.php</file>
+            <file>file:/C:/wamp64/www/Projeto_X/Projeto__X/controller/login.php</file>
         </group>
     </open-files>
 </project-private>
