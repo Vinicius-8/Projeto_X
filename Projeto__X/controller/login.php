@@ -2,32 +2,30 @@
 
 if (isset($_POST)) {
     require '../include/Config.inc.php';
-    $cpf_login =(string) $_POST['cpf'];
+    $id_login =(string) $_POST['id'];
     $senha_login = (string)md5( $_POST['senha']);
     
     $read = new Read();
-    $read->setPwd(', senha');
-    $read->ExecutarRead('aluno');
-    $dados = $read->getResultado();
+    $read->ExecutarRead('aluno', "where id = '{$id_login}'");
+    $capturaBanco = $read->getResultado();
+   
     
-    for($i=0;$i<count($dados);$i++){    
-        
-        if ($dados[$i]['cpf']==$cpf_login && $dados[$i]['senha'] == $senha_login) {
-           
+    if (!empty($capturaBanco)) {
+        if ($senha_login == $capturaBanco[0]['senha']) {
+            echo "Usuário logado com sucesso!!";
             echo "<script>alert('Usuário Logado com sucesso!!');</script>";
-            echo "uSuário logado com sucesso";
+            echo '<script> window.location.href = "../index.html";</script>';
+        }else{
             
-            echo '<script>
-            window.location.href = "../index.html";</script>';
-        } 
+            echo "O usuário não foi logado!, username ou senhas distintas";
+            echo "<script>alert('O usuário não foi logado!, username ou senhas distintas');</script>";
+            echo '<script>window.location.href = "../view/login.html";</script>';
+ 
+        }
+    } else {
+        echo "Usuario não cadastrado";
     }
-    echo "Senha incorreta";
-    echo "<script>alert('Senha incorreta!!');</script>";
-    sleep(2);
-     echo '<script>
-            window.location.href = "../view/login.html";</script>';
-        
-    
+    die;
     
 }else{
     echo "Login vazio!";
