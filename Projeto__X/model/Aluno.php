@@ -9,11 +9,11 @@
  * 
  */
 class Aluno {
-    private $cpf,$nome,$sobrenome,$nasc,$email,$telefone,$senha;
+    private $id,$nome,$sobrenome,$nasc,$email,$telefone,$senha;
     
     /**
      *
-     * @param int $cpf CPF do Aluno
+     * @param int $id CPF do Aluno
      * @param string $nome Nome do aluno
      * @param strin $sobrenome  Sobrenome do Aluno
      * @param int $nasc Data de nascimento do Aluno
@@ -22,18 +22,18 @@ class Aluno {
      * @param string $senha Senha do Aluno
      */
     
-    function __construct($cpf,$nome, $sobrenome, $nasc, $email, $telefone, $senha) {
+    function __construct($id,$nome, $sobrenome, $nasc, $email, $telefone, $senha) {
         $this->nome = $nome;
         $this->sobrenome = $sobrenome;
         $this->nasc = $nasc;
         $this->email = $email;
         $this->telefone = $telefone;
         $this->senha = $senha;
-        $this->cpf = $cpf;
+        $this->id = $id;
     }
     
     public function getVetorAluno() {
-        return array('cpf'=> $this->cpf,'nome'=> $this->nome,
+        return array('id'=> $this->id,'nome'=> $this->nome,
                     'sobrenome'=> $this->sobrenome,
                     'data_nasc'=> $this->nasc,
                     'email'=> $this->email,

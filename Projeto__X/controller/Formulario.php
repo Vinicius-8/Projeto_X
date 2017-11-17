@@ -2,23 +2,16 @@
 
 if (isset($_POST)) {
     require '../include/Config.inc.php';
-    
-    //verificar se o CPF já está cadastrado
-    $cpf = $_POST['cpf'];
+    //verificar se o id  já está cadastrado
+    $id = (string) strtolower($_POST['id']);
     $read = new Read();
-    $read->ExecutarRead('aluno');
-    $cpfs = $read->getResultado();
-    
-    for($i=0;$i<count($cpfs);$i++){    
-        if ($cpfs[$i]['cpf'] == $cpf) {
-            echo "<script>alert('CPF já Cadastrado!');</script>";
-            sleep(1);
-            echo '<script>
-            window.location.href = "../view/cadastro.html";</script>';
-            exit();
-        }
+    $read->ExecutarRead('aluno',"where id ='{$id}'");
+    $consulta = $read->getResultado();
+    if (!empty($consulta)){ 
+        echo "<script>alert('Esse id já foi cadastrado!!');</script>";
+        echo '<script> window.location.href = "../view/cadastro.html";</script>';
     }
-    
+   
     
     //capturando as senhas
     $senha = (string) $_POST['senha'];
@@ -58,7 +51,7 @@ if (isset($_POST)) {
     //Condicional de [1]Aluno/[2]Professor
     if ($tipo) {
         //Criação do objeto aluno para implementar na insersão do banco de dados
-        $aluno = new Aluno($cpf, $nome, $sobrenome, $nasc, $email, $telefone, md5($senha));
+        $aluno = new Aluno($id, $nome, $sobrenome, $nasc, $email, $telefone, md5($senha));
         //objeto create
         $create = new Create();
         //inserção dos dados no banco de dados (ah vá)

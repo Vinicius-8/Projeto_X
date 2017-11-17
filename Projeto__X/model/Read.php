@@ -15,12 +15,10 @@ class Read extends ConexaoBD {
     private $Select;    // Armazena o select que vai realizar a leitura
     private $Valores;   // Armazena os valores que serão substituidos no select
     private $Resultado; // Armazena o resultado das operações no banco 
-    private $pwd = ' ';
+    
     /** @var PDOStatement */
     private $sql_preparado;
-    function setPwd($pwd) {
-        $this->pwd = $pwd;
-    }
+    
 
         /** @var PDO */
     private $Conexao;
@@ -39,8 +37,9 @@ class Read extends ConexaoBD {
              $this->AlterarValores($Valores);
         endif;
        
-
-        $this->Select = "SELECT cpf{$this->pwd} FROM {$Tabela} {$Termos}";
+        
+        $this->Select = "SELECT senha FROM {$Tabela} {$Termos}";
+        
         $this->Executar();
     }
 
@@ -109,20 +108,22 @@ class Read extends ConexaoBD {
             // foreach serve para percorrer cada posição do vetor
             // que contem os valores a serem substituidos
             foreach ($this->Valores as $Indices => $Valor):
-
+                
                 // Caso eu acrescente na sql os parametros de LIMIT ou OFFSET
                 // os indices que contem os valores do limit ou offsset devem ser do tipo inteiro na sql
                 // por isso é necessário fazer essa conversão de tipos aqui
                 if ($Indices == 'limit' || $Indices == 'offset'):
                     $Valor = (int) $Valor;
                 endif;
+                
                 // Utilizando operadores ternarios aqui
                 // caso $Valor seja inteiro recebe PDO::PARAM_INT
                 // caso $valor não seja inteiro recebe PDO::PARAM_STR
+                
                 $this->sql_preparado->bindValue(":{$Indices}", 
                                                 $Valor, 
                                                 ( is_int($Valor) ? PDO::PARAM_INT : PDO::PARAM_STR));
-
+                
                 // LEMBREM-SE:
                 // No bindValue temos:
                 // 1º Argumento: É o link a ser substituido
@@ -138,6 +139,7 @@ class Read extends ConexaoBD {
     private function Executar() {
         $this->Connect();
         try {
+            
             $this->getSintaxe(); // Montando SQL
             $this->sql_preparado->execute(); // Exectuando SQL montado
             $this->Resultado = $this->sql_preparado->fetchAll(); // Armazenando os resulados em formato de Array
