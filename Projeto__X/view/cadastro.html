@@ -14,13 +14,12 @@
             form = document.getElementById("form");
 
             if (s1 !== s2) {
-                alert("senhas discrepantes");
+                alert("As senhas não batem!");
                 document.getElementById("s1").value = "";
                 document.getElementById("s2").value = "";
                 document.getElementById("s1").focus();
                 return false;
-
-            }
+            }                 
         }
     </script>
 
@@ -29,45 +28,63 @@
 <body>
     <div>
         <h3>Cadastro</h3>
-        <hr>
+        
         <form action="../controller/Formulario.php" method="post" onsubmit="return enviar()" id="form">
+            
+            <div class="inputCad">
+                <span>Quero me cadastrar como:</span><input type="radio" name="tipo" class="radio" value="0" required> Aluno
+                <input type="radio" name="tipo" class="radio" value="1"> Professor                
+            </div>           
+            
 
-            <input type="radio" name="tipo" class="radio" value="0" required> Aluno
-            <input type="radio" name="tipo" class="radio" value="1"> Professor
-            <hr>
-
-            <blockquote>
-
+            <div class="inputCad">
                 Nome: <br>
                 <input type="text" name="nome" required placeholder="Nome">
+            </div>
+            
 
-                <br>Sobrenome:
+            <div class="inputCad">
+                Sobrenome:
                 <br>
-                <input type="text" name="sobrenome" required placeholder="sobrenome">
+                <input type="text" name="sobrenome" required placeholder="Sobrenome">
+            </div>
+            
 
-
-                <br> username:
-                <br> <input type="text" name="id" required placeholder="username">
-
-
-                <br>Data de Nascimento:
+            <div class="inputCad">
+                Data de Nascimento:
                 <br>
-                <input type="number" name="nasc" required placeholder="ddd/mmm/aaa"><br> E-mail:
-                <br>
-                <input type="email" name="email" required placeholder="Digite seu email">
+                <input type="number" name="nasc" required placeholder="ddd/mmm/aaa">
+            </div>
+            
+            
+            <div class="inputCad">
+                Telefone:
+                <br><input id="telefone" type="number" name="telefone" required placeholder="Telefone" onblur="validarTel()">
+            </div>
+            
+            <div class="inputCad">
+                E-mail:
+                <br><input type="email" name="email" required placeholder="Digite seu email">
+            </div>
+            
+            
+            <div class="inputCad">
+                Nome de usuário:
+                <br> <input type="text" name="id" required placeholder="Username">
+            </div>
+            
 
-                <br>Telefone:
-                <br><input type="number" name="telefone" required placeholder="Telefone">
-
-                <br>Senha: (mínimo 8 caracteres)
-                <br><input type="password" name="senha" placeholder="Senha" pattern=".{8,}" id='s1' required>
-
-                <br> Confirmação da senha:
+            <div class="inputCad">
+                Senha: (mínimo 8 caracteres)
+                <br><input type="password" name="senha" placeholder="Senha" pattern=".{8,}" id='s1' required>                
+            </div>            
+            
+            <div class="inputCad">
+                Confirmação da senha:
                 <br><input type="password" name="senha2" placeholder="Senha" pattern=".{8,}" id="s2" required>
-                <br><br>
+            </div>
 
-                <input type="submit" value="Cadastrar" id="sub">
-            </blockquote>
+            <input type="submit" value="Cadastrar" id="sub">
         </form>
     </div>
 </body>
