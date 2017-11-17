@@ -6,6 +6,7 @@ if (isset($_POST)) {
     $id = (string) strtolower($_POST['id']);
     $read = new Read();
 <<<<<<< HEAD
+<<<<<<< HEAD
     $read->ExecutarRead('aluno');
     $cpfs = $read->getResultado();
     
@@ -18,11 +19,16 @@ if (isset($_POST)) {
             exit();
         }
 =======
+=======
+>>>>>>> 543fbd651edd4e354ebe3518a6daa7646dfd65dd
     $read->ExecutarRead('aluno',"where id ='{$id}'");
     $consulta = $read->getResultado();
     if (!empty($consulta)){ 
         echo "<script>alert('Esse id já foi cadastrado!!');</script>";
         echo '<script> window.location.href = "../view/cadastro.html";</script>';
+<<<<<<< HEAD
+>>>>>>> 543fbd651edd4e354ebe3518a6daa7646dfd65dd
+=======
 >>>>>>> 543fbd651edd4e354ebe3518a6daa7646dfd65dd
     }
    
