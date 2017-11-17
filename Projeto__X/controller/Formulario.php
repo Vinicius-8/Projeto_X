@@ -1,35 +1,17 @@
 <?php
 
 if (isset($_POST)) {
+    var_dump($_POST);
     require '../include/Config.inc.php';
     //verificar se o id  já está cadastrado
     $id = (string) strtolower($_POST['id']);
     $read = new Read();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    $read->ExecutarRead('aluno');
-    $cpfs = $read->getResultado();
-    
-    for($i=0;$i<count($cpfs);$i++){    
-        if ($cpfs[$i]['cpf'] == $cpf) {
-            echo "<script>alert('CPF já cadastrado!');</script>";
-            sleep(1);
-            echo '<script>
-            window.location.href = "../view/cadastro.html";</script>';
-            exit();
-        }
-=======
-=======
->>>>>>> 543fbd651edd4e354ebe3518a6daa7646dfd65dd
+
     $read->ExecutarRead('aluno',"where id ='{$id}'");
     $consulta = $read->getResultado();
     if (!empty($consulta)){ 
         echo "<script>alert('Esse id já foi cadastrado!!');</script>";
         echo '<script> window.location.href = "../view/cadastro.html";</script>';
-<<<<<<< HEAD
->>>>>>> 543fbd651edd4e354ebe3518a6daa7646dfd65dd
-=======
->>>>>>> 543fbd651edd4e354ebe3518a6daa7646dfd65dd
     }
    
     
