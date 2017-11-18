@@ -14,7 +14,7 @@ if (isset($_POST)) {
     
     if (!empty($capturaBanco_aluno)) {
         if ($senha_login == $capturaBanco_aluno[0]['senha']) {
-            echo "Aluno logado com sucesso!!";
+            echo "Aluno logado com sucesso!";
             echo "<script>alert('Aluno Logado com sucesso!!');</script>";
             echo '<script> window.location.href = "../index.html";</script>';
         }else{
