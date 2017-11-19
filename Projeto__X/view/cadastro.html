@@ -2,91 +2,104 @@
 
 <html>
 
-<head>
-    <title>Cadastro</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/estilo_cadastro.css">
-    <script>
-        function enviar() {
-            s1 = document.getElementById("s1").value;
-            s2 = document.getElementById("s2").value;
-            form = document.getElementById("form");
+    <head>
+        <title>Cadastro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estilo_cadastro.css">
+        <script>
+            function enviar() {
+                s1 = document.getElementById("s1").value;
+                s2 = document.getElementById("s2").value;
+                form = document.getElementById("form");
 
-            if (s1 !== s2) {
-                alert("As senhas não batem!");
-                document.getElementById("s1").value = "";
-                document.getElementById("s2").value = "";
-                document.getElementById("s1").focus();
-                return false;
-            }                 
-        }
-    </script>
+                if (s1 !== s2) {
+                    alert("As senhas não batem!");
+                    document.getElementById("s1").value = "";
+                    document.getElementById("s2").value = "";
+                    document.getElementById("s1").focus();
+                    return false;
+                }
+            }
+        </script>
 
-</head>
+    </head>
 
-<body>
-    <div>
-        <h3>Cadastro</h3>
-        
-        <form action="../controller/Formulario.php" method="post" onsubmit="return enviar()" id="form">
-            
-            <div class="inputCad">
-                <span>Quero me cadastrar como:</span><input type="radio" name="tipo" class="radio" value="0" required> Aluno
-                <input type="radio" name="tipo" class="radio" value="1"> Professor                
-            </div>           
-            
+    <body>
+        <div>
+            <h3>Cadastro</h3>
 
-            <div class="inputCad">
-                Nome: <br>
-                <input type="text" name="nome" required placeholder="Nome">
-            </div>
-            
+            <form action="../controller/Formulario.php" method="post" onsubmit="return enviar()" id="form">
 
-            <div class="inputCad">
-                Sobrenome:
-                <br>
-                <input type="text" name="sobrenome" required placeholder="Sobrenome">
-            </div>
-            
+                <div class="inputCad">
+                    <span>Quero me cadastrar como:</span><input type="radio" name="tipo" class="radio" value="0" required> Aluno
+                    <input type="radio" name="tipo" class="radio" value="1"> Professor                
+                </div>           
 
-            <div class="inputCad">
-                Data de Nascimento:
-                <br>
-                <input type="number" name="nasc" required placeholder="ddd/mmm/aaa">
-            </div>
-            
-            
-            <div class="inputCad">
-                Telefone:
-                <br><input id="telefone" type="number" name="telefone" required placeholder="Telefone" onblur="validarTel()">
-            </div>
-            
-            <div class="inputCad">
-                E-mail:
-                <br><input type="email" name="email" required placeholder="Digite seu email">
-            </div>
-            
-            
-            <div class="inputCad">
-                Nome de usuário:
-                <br> <input type="text" name="id" required placeholder="Username">
-            </div>
-            
 
-            <div class="inputCad">
-                Senha: (mínimo 8 caracteres)
-                <br><input type="password" name="senha" placeholder="Senha" pattern=".{8,}" id='s1' required>                
-            </div>            
-            
-            <div class="inputCad">
-                Confirmação da senha:
-                <br><input type="password" name="senha2" placeholder="Senha" pattern=".{8,}" id="s2" required>
-            </div>
+                <div class="inputCad">
+                    Nome: <br>
+                    <input type="text" name="nome" required placeholder="Nome">
+                </div>
 
-            <input type="submit" value="Cadastrar" id="sub">
-        </form>
-    </div>
-</body>
+
+                <div class="inputCad">
+                    Sobrenome:
+                    <br>
+                    <input type="text" name="sobrenome" required placeholder="Sobrenome">
+                </div>
+
+
+                <div class="inputCad">
+                    Data de Nascimento:
+                    <br>
+                    <input type="date" name="nasc" required>
+                </div>
+
+
+                <div class="inputCad">
+                    Telefone:
+                    <br><input type="text" name="telefone" required placeholder="Telefone" id="telefone">
+                </div>
+
+                <div class="inputCad">
+                    E-mail:
+                    <br><input type="email" name="email" required placeholder="Digite seu email">
+                </div>
+
+
+                <div class="inputCad">
+                    Nome de usuário:
+                    <br> <input type="text" name="id" required placeholder="Username">
+                </div>
+
+
+                <div class="inputCad">
+                    Senha: (mínimo 8 caracteres)
+                    <br><input type="password" name="senha" placeholder="Senha" pattern=".{8,}" id='s1' required>                
+                </div>            
+
+                <div class="inputCad">
+                    Confirmação da senha:
+                    <br><input type="password" name="senha2" placeholder="Senha" pattern=".{8,}" id="s2" required>
+                </div>
+
+                <input type="submit" value="Cadastrar" id="sub">
+
+                <script>
+                    var fone = document.getElementById("telefone");
+                    fone.onblur = function () {
+                        var valid = /^([\d]{2})([\d]{1})([\d]{4})([\d]{4})$/;
+                        if (!valid.test(this.value)) {
+                            alert("Ops! Tem alguma coisa errada. Verifique se o número está correto!");
+                        } else {
+                            console.log("entrou");
+                            this.value = this.value.replace(valid, '($1) $2 $3-$4')
+                        }
+                    };
+                </script>
+            </form>
+        </div>
+    </body>
 
 </html>

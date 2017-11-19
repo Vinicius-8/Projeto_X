@@ -1,14 +1,6 @@
 body {
     margin: 0 auto;
     width: 100%;
-    position: absolute;
-    font-family: sans-serif;
-    background-color: #303;
-}
-
-body {
-    margin: 0 auto;
-    width: 100%;
     position: fixed;
     font-family: sans-serif;
     background-image: url(../imagens/cafee.jpg);
@@ -86,7 +78,7 @@ div:not(.inputCad){
     width:30%;
 }
 
-input[type=text], input[type=number], input[type=email], input[type=password] {
+input[type=text], input[type=number], input[type=email], input[type=password], input[type=date] {
     padding: 10px;
     width: 60%;
     color: white;
@@ -95,7 +87,7 @@ input[type=text], input[type=number], input[type=email], input[type=password] {
     border-bottom: 2px solid white;
 }
 
-input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input[type=password]:focus, input[type=date]:focus {
     background-color: rgba(250, 250, 250, 0.1);
 }
 
@@ -121,10 +113,10 @@ input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input
 
 
 input.radio {
-    margin: 0;
     margin-left: 20px;
-    width: auto;
-
+    display: inline-block;
+    width: 6px;
+    height: 6px;
 }
 
 h3 {

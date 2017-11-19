@@ -44,8 +44,11 @@ if (isset($_POST)) {
     $tipo = (boolean) ($_POST['tipo'] == 0 ) ? true : false; //é aluno?
     $nome = (string) $_POST['nome'];
     $sobrenome = $_POST['sobrenome'];
-    $nasc = (int) $_POST['nasc'];
-    $telefone = (integer) $_POST['telefone'];
+    $nasc = $_POST['nasc'];
+    $nasc = explode('/', $nasc);     // transformando a data em vetor
+    $nasc = array_reverse($nasc); // invertendo as posicoes do vetor, para atender o padrão de data do banco
+    $nasc = implode('-', $nasc);     // transformando em string de novo
+    $telefone = (string) $_POST['telefone'];
 
 
     

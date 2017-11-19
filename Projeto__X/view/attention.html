@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Attention</title>
+        <meta charset="UTF-8">        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo_attention.css" rel="stylesheet" type="text/css"/>        
+    </head>
+    <body>
+        <div class="main">
+            <div id="symbol"></div>
+            <div id="message">
+                <h3 id="t">Mensagem</h3>
+                <p id="d">Descrição, bla bla bla bla bla</p>
+            </div>
+        </div>
+        <script>
+                var symbol = document.getElementById("symbol");
+                var message = document.getElementById("message");
+                var titlem = document.getElementById("t");
+                var descm = document.getElementById("d");
+                var comando = 0;
+                function casos() {
+                    switch(comando){
+                        case 0:
+                           symbol.style.backgroundImage = "url('imagens/ok.png')";
+                           titlem.innerHTML = "Aluno Cadastrado com Sucesso!";                           
+                           descm.innerHTML = "Você será redirecionado para sua página de cursos!"; 
+                           //Falta o comando de redirecionamento
+                           break;
+                        case 1:
+                           symbol.style.backgroundImage = "url('imagens/ok.png')";
+                           titlem.innerHTML = "Professor Cadastrado com Sucesso!";                           
+                           descm.innerHTML = "Você será redirecionado para sua página de cursos!"; 
+                           //Falta o comando de redirecionamento
+                           break;
+                        case 2:
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "O login não foi possível!";                           
+                           descm.innerHTML = "Verique se o nome de usuário e senha estão corretos!"; 
+                           window.setTimeout("location.href='login.html'", 4000);
+                           break;                           
+                        case 3:
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "Formulário não preenchido!";                           
+                           descm.innerHTML = "Preencha todos os campos corretamente!"; 
+                           window.setTimeout("location.href='cadastro.html'", 3000);
+                           break;
+                        case 4:
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "Email inválido!";                           
+                           descm.innerHTML = "Insira um email válido!"; 
+                           window.setTimeout("location.href='cadastro.html'", 3000);
+                           break;
+                        case 5:
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "Esse usuário já foi cadastrado!";                           
+                           descm.innerHTML = "Insira um outro nome de usuário para concluir seu cadastro!"; 
+                           window.setTimeout("location.href='cadastro.html'", 3000);
+                           break;
+                        case 6:
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "O login não foi possível, campo vazio!";                           
+                           descm.innerHTML = "Preencha os dados corretamente para entrar!"; 
+                           window.setTimeout("location.href='login.html'", 3000);
+                           break;
+                        case 7:
+                           symbol.style.backgroundImage = "url('imagens/ok.png')";
+                           titlem.innerHTML = "Aluno logado com sucesso!";                           
+                           descm.innerHTML = "Seja bem vindo ao nosso sistema!"; 
+                           //Falta o comando de redirecionamento
+                           break;
+                        case 8:
+                           symbol.style.backgroundImage = "url('imagens/ok.png')";
+                           titlem.innerHTML = "Professor logado com sucesso!";                           
+                           descm.innerHTML = "Seja bem vindo ao nosso sistema!"; 
+                           //Falta o comando de redirecionamento
+                           break;
+                    }
+                }
+                
+                casos();
+        </script>
+    </body>
+</html>
