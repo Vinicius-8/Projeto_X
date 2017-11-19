@@ -21,3 +21,5 @@ email varchar(60) not null,
 telefone varchar(30) not null, 
 senha varchar(33)not null, primary key(id));
 
+
+
