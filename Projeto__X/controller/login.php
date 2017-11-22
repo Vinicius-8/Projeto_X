@@ -11,9 +11,11 @@ if (isset($_POST)) {
     //tabela de aluno
     $read->ExecutarRead('aluno', "where id = '{$id_login}'");
     $capturaBanco_aluno = $read->getResultado();
-    //tabela de professor
+   if(!$capturaBanco_aluno){
+        //tabela de professor
     $read->ExecutarRead('professor', "where id = '{$id_login}'");
     $capturaBanco_prof = $read->getResultado();
+   }
     
     
     if (!empty($capturaBanco_aluno)) {
