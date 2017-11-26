@@ -15,11 +15,19 @@ class Read extends ConexaoBD {
     private $Select;    // Armazena o select que vai realizar a leitura
     private $Valores;   // Armazena os valores que serão substituidos no select
     private $Resultado; // Armazena o resultado das operações no banco 
-    
+    private $daft = 'senha';
+    /**
+     * 
+     * @param string $daft o que buscar no banco
+     */
+    function setDaft($daft) {
+        $this->daft = $daft;
+    }
     /** @var PDOStatement */
     private $sql_preparado;
     
 
+    
         /** @var PDO */
     private $Conexao;
 
@@ -38,7 +46,7 @@ class Read extends ConexaoBD {
         endif;
        
         
-        $this->Select = "SELECT senha FROM {$Tabela} {$Termos}";
+        $this->Select = "SELECT {$this->daft} FROM {$Tabela} {$Termos}";
         
         $this->Executar();
     }

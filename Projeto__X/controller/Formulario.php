@@ -13,6 +13,7 @@ if (isset($_POST)) {
     
     if (!empty($consulta_aluno) or !empty($consulta_prof)){ 
         echo "<script>window.location.href = '../view/attention.html?5';</script>";
+        die();
     }
    
     

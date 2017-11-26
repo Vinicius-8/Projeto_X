@@ -73,13 +73,13 @@
                            symbol.style.backgroundImage = "url('imagens/ok.png')";
                            titlem.innerHTML = "Aluno logado com sucesso!";                           
                            descm.innerHTML = "Seja bem vindo ao nosso sistema!"; 
-                           //Falta o comando de redirecionamento
+                           window.setTimeout("location.href='../sistema/logadoAluno.php'", 3000);
                            break;
                         case 8:
                            symbol.style.backgroundImage = "url('imagens/ok.png')";
                            titlem.innerHTML = "Professor logado com sucesso!";                           
                            descm.innerHTML = "Seja bem vindo ao nosso sistema!"; 
-                           //Falta o comando de redirecionamento
+                           window.setTimeout("location.href='../sistema/professor/logadoProfessor.php'", 3000); 
                            break;
                     }
                 }
