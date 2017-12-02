@@ -5,26 +5,37 @@
  *
  * @author Vinicius
  */
-require '../../include/Defines.php';
-require '../../model/ConexaoBD.php';
-require '../../model/Read.php';
+
 class Lista {
     
-    private $idProfessor,$idCurso;
-    private $nome, $preco;
-    private $aulas,$form,$alunos,$desc,$thumb;
+    private $idProfessor; //id do professor na tabela professor 
     
-    function __construct($idProfessor, $idCurso) {
+    private $nome, $preco;//nome e preço na tabela cursos
+    private $aulas,$form,$alunos,$desc,$thumb;//atributos da tabela cursos
+    /**
+     *
+     * @var Read 
+     */
+    private $read;
+    
+    /**
+     * 
+     * @param type $idProfessor id do professor na tabela professor
+     * @param type $idCurso id do curso na tabela curso
+     */
+    function __construct($idProfessor) {
         $this->idProfessor = $idProfessor;
-        $this->idCurso = $idCurso;
-        $this->getData();
+        $this->read = new Read();
     }
     
-    public function getData() {
-        $read = new Read();
-        $read->setDaft("*");
-        $read->ExecutarRead('curso', "where id = '{$this->idCurso}' and id_professor = '{$this->idProfessor}' ");
-        $res = $read->getResultado();
+    /**
+     * O metodo getData é responsável por pegar todos os atributos do curso
+     * @return array
+     */
+    public function getData($idCurso) {
+        $this->read->setDaft("*");
+        $this->read->ExecutarRead('curso', "where id = '{$idCurso}' and id_professor = '{$this->idProfessor}' ");
+        $res = $this->read->getResultado();
         $this->alunos = $res[0]['quant_alunos'];
         $this->aulas =$res[0]['numero_aulas'];
         $this->desc =$res[0]['descricao'];
@@ -34,6 +45,18 @@ class Lista {
         $this->thumb =$res[0]['thumb'];
         return $res;
     }
+    
+    /**
+     * O metodo getAllCursos procura no BD por todos os cursos de um professor
+     * @return array vetor com o nome do curso e id
+     */
+    public function getAllCursos() {
+        $this->read->setDaft("id,nome_curso,thumb");
+        $this->read->ExecutarRead(" Projeto_x.curso ", "where id_professor = '{$this->idProfessor}'");
+        return $this->read->getResultado();
+    }
+    
+    
     
     function getAulas() {
         return $this->aulas;

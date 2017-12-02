@@ -4,10 +4,15 @@ if (!$_SESSION['logado'] and $_SESSION['aluno']) {
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
     die();
-}else if (!isset($_GET)) {
-    header('location:index.html');
+}
+
+if (isset($_POST['cursoid'])) {
+    $_SESSION['id_curso'] = $_POST['cursoid']; 
+    header('location:Playlist.php');
     die();
 }
+
+
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
 require '../../model/Create.php';
@@ -16,6 +21,8 @@ require '../../model/Read.php';
 $nome = (string)$_GET['nome'];
 $preco = (double) $_GET['preco'];
 $desc = (string) $_GET['desc'];
+
+
 //inserindo o curso no banco de dados
 $create = new Create();
 $dados = array('nome_curso'=>$nome,'preco'=>$preco,'descricao'=>$desc,'id_professor'=>$_SESSION['idNum'],'numero_aulas'=>0,'numero_form'=>0,'quant_alunos'=>0);

@@ -4,10 +4,18 @@ if((!isset($_SESSION['idNum'])) or (!isset($_SESSION['id_curso']))){
     header("location:../../view/attention.html?9");
     die();
 }
+
+     
+
+
+
+require '../../include/Defines.php';
+require '../../model/ConexaoBD.php';
+require '../../model/Read.php';
 require '../../model/Lista.php';
 
-$list = new Lista($_SESSION['idNum'], $_SESSION['id_curso']);
-//var_dump($list->getData());
+$list = new Lista($_SESSION['idNum']);
+$list->getData( $_SESSION['id_curso']);
 ?>
 <!DOCTYPE HTML>
 <html lang=”pt-br”>

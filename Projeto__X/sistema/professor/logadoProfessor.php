@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!$_SESSION['logado'] and $_SESSION['aluno']) {
@@ -10,33 +9,39 @@ if (!$_SESSION['logado'] and $_SESSION['aluno']) {
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
+require '../../model/Lista.php';
 
+//$_SESSION['id'] é o nickname do professor na tabela professor
 
-//Capturando o id do professor 'idNum'
+//Capturando o id [númerico]do professor 'idNum'
 $read = new Read();
 $read->setDaft('idNum');
-$read->ExecutarRead('professor',"where id = '{$_SESSION['id']}'");
+$read->ExecutarRead('professor',"where id = '{$_SESSION['id']}'"); //session 'id' é o nickname do professor na tabela professor
 try {
-    
     $_SESSION['idNum'] = $read->getResultado()[0]['idNum'];
     //capturando o nome do professor
     $read->setDaft('nome');
     $read->ExecutarRead('professor',"where idNum = '{$_SESSION['idNum']}'");
     $nome = $read->getResultado()[0]['nome'];
-
 } catch (Exception $exc) {
     echo $exc->getTraceAsString();
     die();
 }
+
+
+$lista = new Lista($_SESSION['idNum']);//objeto lista
 //capturando os nomes dos cursos do professor
-$read->setDaft('nome_curso');
-$read->ExecutarRead('curso',"where id_professor = '{$_SESSION['idNum']}'");
-$cursos = $read->getResultado();
+$cursos = $lista->getAllCursos();
         echo "<script>var array = [";
         for($i = 0; $i<count($cursos);$i++){
             echo "'{$cursos[$i]['nome_curso']}',";
         }
         echo "'nada']</script>";
+//------------------------------------------
+
+
+
+        
 ?>
 <!DOCTYPE html>
 <html>
@@ -47,7 +52,12 @@ $cursos = $read->getResultado();
         <link rel="stylesheet" href="css/estilo_logadoProfessor.css"/>
         <script src="scripts/script_logadoProfessor.js"></script>
         <!--passando o array php para o js-->
-        <script>console.log(array);</script>
+        <script>
+            function select(idCurso){
+                document.write("<form method='POST' action='InsertCurso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
+                document.getElementById('mular').submit();
+            }
+        </script>
         
     </head>
     <body>
@@ -63,19 +73,22 @@ $cursos = $read->getResultado();
                 <h2 id="title">Meus cursos</h2>
             </div>
             
-            <div id="content"> 
-                <div class="container">
+            <div id="content">
+                <!--
+                <div class="container" onclick="select(2)">
                     <img src="imgs/271 x 181.png" alt='imagem do curso'>
                     <div class="fade"><a>Curso _ X</a></div>  
                 </div>
-                <div class="container">
-                    <img src="imgs/assa.PNG" alt='imagem do curso'>
-                    <div class="fade"><a>Curso tal</a></div>  
-                </div>
-                <div class="container">
-                    <div class="fade"><a>Curso _ V</a></div>  
-                </div>
+                -->
+              <?php
                 
+                   for($i = 0; $i<count($cursos); $i++){
+                        echo "<div class='container' onclick='select(".$cursos[$i]['id'].")' >
+                    <img src='".$cursos[$i]['thumb']."'  alt='Thumb do Curso'> "
+                                . "<div class='fade'><a>".$cursos[$i]['nome_curso']."</a></div></div>";
+                    }
+                    
+                ?>
                 
                 <!-- //Criar Novo curso
                 <div class="container" style="opacity: 0.5">
