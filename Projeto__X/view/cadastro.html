@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 
+<<<<<<< HEAD
 <html lang="pt-br">
+=======
+<html lang="pt-br"> <!-- lingua portuguesa do brasil informada pelo professor iury -->
+>>>>>>> c1c28864c3b554b43207c5ae3b27bd6b810b7b94
 
     <head>
         <title>Cadastro</title>
@@ -32,8 +36,11 @@
             <form action="../controller/Formulario.php" method="post" onsubmit="return enviar()" id="form">
 
                 <div class="inputCad">
-                    <span>Quero me cadastrar como:</span><input type="radio" name="tipo" class="radio" value="0" required> Aluno
-                    <input type="radio" name="tipo" class="radio" value="1"> Professor                
+                    <span>Quero me cadastrar como:</span>
+                    <input type="radio" name="tipo" class="radio" value="0" id="a" required> 
+                    <label for="a">Aluno</label>
+                    <input type="radio" name="tipo" class="radio" value="1" id="p"> 
+                    <label for="p">Professor</label>                
                 </div>           
 
 
