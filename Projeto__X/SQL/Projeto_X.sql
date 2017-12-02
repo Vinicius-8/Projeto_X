@@ -26,9 +26,16 @@ nome_curso varchar(40) not null,
 preco double not null,
 descricao varchar(140) not null,
 id_professor int not null,
-numero_aulas int not null,
-numero_form int not null,
-quant_alunos int not null,
+numero_aulas int not null default 0,
+numero_form int not null default 0,
+quant_alunos int not null default 0,
+thumb varchar(255) default 'https://getuikit.com/v2/docs/images/placeholder_600x400.svg',
 primary key(id),
 foreign key(id_professor) references professor(idNum)
 );
+
+use Projeto_X;
+select * from curso;
+
+select * from professor;
+

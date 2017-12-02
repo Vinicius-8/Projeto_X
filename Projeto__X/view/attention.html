@@ -81,6 +81,18 @@
                            descm.innerHTML = "Seja bem vindo ao nosso sistema!"; 
                            window.setTimeout("location.href='../sistema/professor/logadoProfessor.php'", 3000); 
                            break;
+                       case 9: 
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "Ocorreu um problema!";                           
+                           descm.innerHTML = "Tente novamente!"; 
+                           window.setTimeout("location.href='../sistema/professor/logadoProfessor.php'", 4000);
+                           break;
+                       case 10:
+                           symbol.style.backgroundImage = "url('imagens/ok.png')";
+                           titlem.innerHTML = "Tudo Certo!";                           
+                           descm.innerHTML = "As modificações foram realizadas com sucesso!"; 
+                           window.setTimeout("location.href='../sistema/professor/logadoProfessor.php'", 4000);
+                           break;
                     }
                 }
                 

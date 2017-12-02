@@ -5,12 +5,17 @@ $_SESSION['logado'] = false;
 $_SESSION['id'] = null;
 $_SESSION['aluno'] = false;
 
-if (isset($_POST)) {
+if (isset( $_POST['id']) and isset($_POST['senha'])) {
     require '../include/Config.inc.php';
     
-    $id_login =(string) $_POST['id'];
-    $senha_login = (string)md5( $_POST['senha']);
-    
+    try{
+        
+        $id_login =(string) $_POST['id'];
+        $senha_login = (string)md5( $_POST['senha']);
+
+    } catch (Exception $e){
+        echo $e->getMessage();
+    }
     $read = new Read();
     
     //tabela de aluno
@@ -32,10 +37,11 @@ if (isset($_POST)) {
             $_SESSION['aluno'] = true;
             $_SESSION['id'] = $id_login;
             echo "<script>window.location.href = '../view/attention.html?7';</script>";
+            exit();
         }else{
             //falha
             echo "<script>window.location.href = '../view/attention.html?2';</script>";
- 
+            exit();
         }
     } elseif( !empty ($capturaBanco_prof) ) {
         
@@ -45,15 +51,20 @@ if (isset($_POST)) {
             $_SESSION['aluno'] = false;
             $_SESSION['id'] = $id_login;
             echo "<script>window.location.href = '../view/attention.html?8';</script>";
+            exit();
         }else{
             //falha
             echo "<script>window.location.href = '../view/attention.html?2';</script>";
+            exit();
         }
     }else{
         //usuário não cadastrado
         echo "<script>window.location.href = '../view/attention.html?2';</script>";   
+        exit();
     }
     }else{
         //login vazio
         echo "<script>window.location.href = '../view/attention.html?6';</script>";
+        exit();
     }
+exit();
