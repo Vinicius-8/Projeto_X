@@ -4,6 +4,7 @@ body {
     position: fixed;
     font-family: sans-serif;
     background-image: url(../imagens/cafee.jpg);
+    background-size: auto;
     background-repeat: no-repeat;    
 }
 
@@ -115,8 +116,8 @@ input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input
 input.radio {
     margin-left: 20px;
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 12px;
+    height: 12px;
 }
 
 h3 {
