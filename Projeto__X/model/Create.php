@@ -33,7 +33,7 @@ class Create extends ConexaoBD {
     public function ExecutarCreate($Tabela, array $Dados) {
         $this->Tabela = (string) $Tabela;
         $this->Dados = $Dados;
-
+        
         $this->getSintaxe();
         $this->Executar();
     }

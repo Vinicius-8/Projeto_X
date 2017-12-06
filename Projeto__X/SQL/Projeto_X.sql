@@ -28,16 +28,25 @@ nome_curso varchar(40) not null,
 preco double not null,
 descricao varchar(140) not null,
 id_professor int not null,
-numero_aulas int not null default 0,
-numero_form int not null default 0,
-quant_alunos int not null default 0,
 thumb varchar(255) default 'https://www.cunninghamlegal.com/wp-content/uploads/2015/10/iStock_000047986424_Medium_271x181.jpg',
 primary key(id),
 foreign key(id_professor) references professor(idNum)
 );
 
+create table aula(
+id int auto_increment unique,
+nome_aula varchar(100) not null,
+url varchar(255) not null,
+id_curso int not null,
+primary key(id),
+foreign key(id_curso) references curso(id));
+
 use Projeto_X;
 select * from curso;
 
-select * from professor;
+select * from professor; 	 	
+select * from aluno;
+select * from aula;	
+drop table aula;	
+drop table curso;
 

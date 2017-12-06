@@ -104,10 +104,12 @@ div#content .container{
     float: left;
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 div#content .container img {
     max-width: 270px;
     max-height: 180px;
+    
 }
 
 div#content .container .fade{

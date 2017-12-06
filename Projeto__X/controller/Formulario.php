@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_POST)) {
     require '../include/Config.inc.php';
     //verificar se o id  já está cadastrado
@@ -67,6 +67,8 @@ if (isset($_POST)) {
         $prof = array('id'=> $id, 'nome'=> $nome, 'sobrenome'=> $sobrenome, 'data_nasc'=> $nasc, 'email'=> $email, 'telefone'=> $telefone, 'senha'=> md5($senha));
         //inserção dos dados no banco de dados (ah vá)
         $create->ExecutarCreate('projeto_x.professor', $prof);
+        
+        $_SESSION['id'] = $id;
         //professor cadastrado com sucesso
         echo "<script>window.location.href = '../view/attention.html?1';</script>";
     }

@@ -124,9 +124,6 @@ $cursos = $lista->getAllCursos();
             <div id="criar">
                 <form action="InsertCurso.php" method="GET" id="form">
                     Nome do curso:<br>
-<<<<<<< HEAD
-                    <input type="text" name="nome" placeholder="Nome do curso"required><br>
-=======
                     <input type="text" name="nome" placeholder="Nome do Curso" id="nomeCurso"required><br>
                     
                     
@@ -145,8 +142,7 @@ $cursos = $lista->getAllCursos();
                     };
                     </script>
                     <!--------------------------------------------------->
-                    
->>>>>>> 1ae3da42aabe12d7dfb5c9620d825e5a775c659a
+                 
                     Preço:<br>
                      R$<input type="number" name="preco" placeholder="Ex.: R$50" required><br><br>
                     Descrição:<br>

@@ -5,10 +5,6 @@ if((!isset($_SESSION['idNum'])) or (!isset($_SESSION['id_curso']))){
     die();
 }
 
-     
-
-
-
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
@@ -16,6 +12,7 @@ require '../../model/Lista.php';
 
 $list = new Lista($_SESSION['idNum']);
 $list->getData( $_SESSION['id_curso']);
+$aulas = $list->getAllAulas($_SESSION['id_curso']);
 ?>
 <!DOCTYPE HTML>
 <html lang=”pt-br”>
@@ -35,6 +32,15 @@ $list->getData( $_SESSION['id_curso']);
                     alert("Os campos: thumb, preço e descição devem ser preenchidos");
                 }
                 
+            }
+            
+            function adicionar(){
+                niu = document.getElementById("new").value;
+                url = document.getElementById("url").value;
+                
+                if (niu!=="" && url!=="") {
+                    document.getElementById("aula").submit();
+                } 
             }
         </script>
     </head>
@@ -79,13 +85,18 @@ $list->getData( $_SESSION['id_curso']);
                     <span class="title"><a href="#">Aula 1: Macacos Albinos dos alpes suiços da america latina</a></span>
                 </div>
                 -->
+                <?php
+                            for($i=0;$i<count($aulas);$i++){
+                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='".$aulas[$i]['url']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                            }
+                ?>
                 <div id="new">
                     
                     <!--inserir aula-->
-                    <form method="POST" action="-">
-                    <span id="tit">Aula Nova: </span> <input type="text" name="new" placeholder="Nome"> 
-                    <input type="text" name="url" placeholder="Link do vídeo">
-                    <button>Adicionar</button>
+                    <form method="POST" action="InsertAula.php" id="aula">
+                        <span id="tit">Aula Nova: </span> <input type="text" name="new" placeholder="Nome" required> 
+                        <input type="text" name="url" placeholder="Link do vídeo" required>
+                    <button onclick="adicionar()">Adicionar</button>
                     
                     </form>
                 </div>
