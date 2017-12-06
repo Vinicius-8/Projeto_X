@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand');  
+
 body {
     margin: 0 auto;
     width: 100%;
-    position: fixed;
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background-image: url(../imagens/cafee.jpg);
+    background-attachment: fixed;
     background-size: auto;
     background-repeat: no-repeat;    
 }
@@ -13,15 +15,17 @@ input {
     width: 100px;
     margin-bottom: 5px;
     margin-top: 5px;
+    font-family: 'Quicksand', sans-serif;
 }
 
-div:not(.inputCad){
+.janCad{
     color: white;
     margin: 0 auto;
     width: 50%;
-    height: 600px;
+    height: 700px;
     background-color: rgba(50, 50, 50, 0.5);
     border-radius: 10px;
+    margin-bottom: 8%;
 }
 
 .inputCad{
@@ -70,12 +74,12 @@ div:not(.inputCad){
 }
 
 .inputCad:nth-child(8) {
-    left: 8%;
-    width:31%;
+    left: 7%;
+    width:34%;
 }
 
 .inputCad:nth-child(9) {
-    left: 8%;
+    left: 4%;
     width:30%;
 }
 
@@ -101,7 +105,7 @@ input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input
     font-size: 13pt;
     position: relative; 
     right: 37%;
-    margin-top: 5%;
+    margin-top: 10%;
     float: right;
     width: 30%;
     color: white;
@@ -122,5 +126,60 @@ input.radio {
 
 h3 {
     text-align: center;
-    padding-top: 30px;
+    padding-top: 40px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 30px;
+    
+}
+.logo svg{
+    position: relative;
+    margin-top: -15px;
+    font:80px sans-serif;
+    width:50%;
+    margin-left: 25%;
+}
+
+.titulo_text{
+    fill:none;
+    stroke:white;
+    stroke-dasharray:6% 29%;
+    stroke-width:4px;
+    stroke-dashoffset:0%;
+    animation:stroke-offset 5.5s infinite linear;
+}
+
+@keyframes stroke-offset{
+    100%{stroke-dashoffset:-35%}
+}
+
+.titulo_text:nth-child(1) {
+    stroke: #FCB15B;
+    animation-delay: 1s;
+}
+
+.titulo_text:nth-child(2) {
+    stroke: #F59844;
+    animation-delay: -2s;
+}
+
+.titulo_text:nth-child(3) {
+    stroke: #FE7D46;
+    animation-delay: -3s;
+}
+
+.titulo_text:nth-child(4) {
+    stroke: #FF5331;
+    animation-delay: -4s;
+}
+
+.titulo_text:nth-child(5) {
+    stroke: #BD3A2D;
+    animation-delay: -5s;
+}
+
+footer p{
+    text-align: center;
+    font-size: 15px;
+    padding-bottom: 20px;
+    color: white;
 }

@@ -8,10 +8,11 @@
 body {
     margin: 0 auto;
     width: 100%;
-    position: fixed;
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
     background-image: url(../imagens/cafee.jpg);
-    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    background-repeat: no-repeat;  
 
 }
 
@@ -21,7 +22,7 @@ body {
     height: 400px;
     background-color: rgba(50, 50, 50, 0.5);
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 40px;
     border-radius: 10px;
 
 }
@@ -44,7 +45,7 @@ form a {
 p {
     position: absolute;
     font-family: 'Quicksand', sans-serif;
-    bottom: -10%;  
+    bottom: 10%;  
     left: 39%;
     font-size: 16px;
 }
@@ -103,4 +104,69 @@ div #sub {
 div #sub:hover {
     background-color: rgba(250, 250, 250, 0.3);
     cursor: pointer;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    font-family: sans-serif;
+    background-image: url(../imagens/cafee.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+#topo{
+    position: fixed;
+    width: 100%;
+    height: 15%;
+    background-color: black;
+}
+
+.titulo_text {     
+    fill: none;    
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 4px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+.logo svg{
+    position: fixed;
+    margin-top: -3.0%;
+    margin-left: 25%;
+    display:block;
+    position: relative;
+    font:80px sans-serif;
+    width:50%;
+}
+
+@keyframes stroke-offset{
+    100%{stroke-dashoffset:-35%}
+}
+
+.titulo_text:nth-child(1) {
+    stroke: #FCB15B;
+    animation-delay: 1s;
+}
+
+.titulo_text:nth-child(2) {
+    stroke: #F59844;
+    animation-delay: -2s;
+}
+
+.titulo_text:nth-child(3) {
+    stroke: #FE7D46;
+    animation-delay: -3s;
+}
+
+.titulo_text:nth-child(4) {
+    stroke: #FF5331;
+    animation-delay: -4s;
+}
+
+.titulo_text:nth-child(5) {
+    stroke: #BD3A2D;
+    animation-delay: -5s;
 }

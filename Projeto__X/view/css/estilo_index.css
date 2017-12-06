@@ -1,23 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand');
 
 * {
-    width: 0;
-    padding: 0;
+    padding: 0px;
 }
 
 header {
-    height: 20px;
+    height: 25%;
     width: 100%;
-    padding: 40px;
-    padding-left: 750px;
     position: fixed;
 }
 
-.topheader{
+.topheader {
     color: white;
     text-decoration: none;
     display: inline;
-    margin: 20px;
+}
+
+.links {
+    display: inline-block;
+    position: relative;
+    float: right;
+    padding: 50px;
+    margin-top: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.links a{
+    margin: 15px;
+}
+
+.links a:hover{
+    border-bottom:3px white solid;
+    padding-bottom:12px;
 }
 
 body {
@@ -27,6 +42,7 @@ body {
     position: absolute;
     font-family: sans-serif;
     background-image: url(../imagens/cafee.jpg);
+    background-size: auto;
     background-repeat: no-repeat;
 }
 
@@ -47,7 +63,7 @@ button {
 }
 
 #cursos {
-    margin-top: 200px;
+    margin-top: 230px;
     margin-bottom: 60px;
 }
 
@@ -59,5 +75,58 @@ a {
 
 div#cent {
     height: 200px;
-    width: 100%;
+    width: 0%;
+}
+
+.logo svg{
+    position: relative;
+    float: left;
+    margin-top: -15px;
+    font:80px sans-serif;
+    width:50%;
+}
+
+.titulo_text{
+    fill:none;
+    stroke:white;
+    stroke-dasharray:6% 29%;
+    stroke-width:4px;
+    stroke-dashoffset:0%;
+    animation:stroke-offset 5.5s infinite linear;
+}
+
+@keyframes stroke-offset{
+    100%{stroke-dashoffset:-35%}
+}
+
+.titulo_text:nth-child(1) {
+    stroke: #FCB15B;
+    animation-delay: 1s;
+}
+
+.titulo_text:nth-child(2) {
+    stroke: #F59844;
+    animation-delay: -2s;
+}
+
+.titulo_text:nth-child(3) {
+    stroke: #FE7D46;
+    animation-delay: -3s;
+}
+
+.titulo_text:nth-child(4) {
+    stroke: #FF5331;
+    animation-delay: -4s;
+}
+
+.titulo_text:nth-child(5) {
+    stroke: #BD3A2D;
+    animation-delay: -5s;
+}
+
+footer p{
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    margin-top: 12%;
 }

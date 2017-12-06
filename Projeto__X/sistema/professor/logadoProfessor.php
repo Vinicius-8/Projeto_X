@@ -33,8 +33,32 @@ $nome = $read->getResultado()[0]['nome'];
         <script src="scripts/script_logadoProfessor.js"></script>
     </head>
     <body>
+        <header>        
+            <a href="../../index.html"><div class="logo"> 
+                <svg> 
+                    <symbol id="s-text"> 
+                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                    <g> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                    </g> 
+                </svg> 
+            </div></a>
+        
+            <div class="links">
+                <a href="../../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
+                <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
+                <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+            </div>        
+        </header>
+        
         <div id="area">
+            
             <div id="esquerda"> 
+                <img src="../../view/imagens/user-teacher.png">
                 <h2><?= $nome?></h2>
                 <div>
                     <botton onClick="contentDiv()">Meus Cursos</botton>
@@ -68,11 +92,11 @@ $nome = $read->getResultado()[0]['nome'];
             <div id="criar">
                 <form action="InsertCurso.php" method="GET" id="form">
                     Nome do curso:<br>
-                    <input type="text" name="nome" placeholder="Nome do Curso"required><br>
+                    <input type="text" name="nome" placeholder="Nome do curso"required><br>
                     Preço:<br>
-                    R$<input type="number" name="preco" placeholder="ex: R$50" required><br>
+                     R$<input type="number" name="preco" placeholder="Ex.: R$50" required><br><br>
                     Descrição:<br>
-                    <textarea name="desc" form="form" placeholder="sobre o que é esse curso?" required></textarea><br>
+                    <textarea name="desc" form="form" placeholder="Descreva as características do curso" required></textarea><br>
                     <input type="submit" value="Criar Curso" >
                 </form>
             </div>
