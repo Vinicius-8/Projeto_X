@@ -1,11 +1,11 @@
-/* global divCriar, divContent, title */
+/* global divCriar, divContent, title,array */
 
 window.onload = function(){
     divContent = document.getElementById('content');
     divCriar = document.getElementById('criar');
     title = document.getElementById('title');
     divCriar.style.display = 'none';
-    
+      
 };
 
 function criarDiv(){

@@ -115,7 +115,7 @@ div#content .container .fade{
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 40%;
+    height: 45%;
     background-color: rgba(0,0,0,0.2);
     background-image: linear-gradient(rgba(250,250,250,0.1), rgba(0,0,0,0.4));
     
@@ -125,6 +125,7 @@ div#content .container .fade a{
     font-size: 20pt;
     position: absolute;
     margin:15px;
+    color: whitesmoke;
 }
 div#content .container:hover .fade{
     display: block;

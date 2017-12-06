@@ -59,20 +59,14 @@ if (isset($_POST)) {
     
     //Condicional de [1]Aluno/[2]Professor
     if ($tipo) {
-        //Criação do objeto aluno para implementar na insersão do banco de dados
-        $aluno = new Aluno($id, $nome, $sobrenome, $nasc, $email, $telefone, md5($senha));
-        
-
-        
-        $create->ExecutarCreate('projeto_x.aluno', $aluno->getVetor());
+        $aluno = array('id'=> $id, 'nome'=> $nome, 'sobrenome'=> $sobrenome, 'data_nasc'=> $nasc, 'email'=> $email, 'telefone'=> $telefone, 'senha'=> md5($senha));
+        $create->ExecutarCreate('projeto_x.aluno', $aluno);
         //aluno cadastrado com sucesso          
         echo "<script>window.location.href = '../view/attention.html?0';</script>";
     }else{
-        //Criação do objeto Professpr para implementar na insersão do banco de dados
-        $prof = new Professor($id, $nome, $sobrenome, $nasc, $email, $telefone, md5($senha));
-        
+        $prof = array('id'=> $id, 'nome'=> $nome, 'sobrenome'=> $sobrenome, 'data_nasc'=> $nasc, 'email'=> $email, 'telefone'=> $telefone, 'senha'=> md5($senha));
         //inserção dos dados no banco de dados (ah vá)
-        $create->ExecutarCreate('projeto_x.professor', $prof->getVetor());
+        $create->ExecutarCreate('projeto_x.professor', $prof);
         //professor cadastrado com sucesso
         echo "<script>window.location.href = '../view/attention.html?1';</script>";
     }
