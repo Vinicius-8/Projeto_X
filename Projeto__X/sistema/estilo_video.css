@@ -2,4 +2,16 @@
     Created on : 06/12/2017, 15:42:25
     Author     : Vinicius
 */
-
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #232323;
+}
+iframe{
+    width: 854px;
+    height: 478px;
+    margin-left:245px;
+    border: none;
+}

@@ -26,7 +26,7 @@ $desc = (string) $_GET['desc'];
 //inserindo o curso no banco de dados
 $create = new Create();
 $dados = array('nome_curso'=>$nome,'preco'=>$preco,'descricao'=>$desc,'id_professor'=>$_SESSION['idNum'],'numero_aulas'=>0,'numero_form'=>0,'quant_alunos'=>0);
-$create->ExecutarCreate('projeto_x.curso',$dados);
+$create->ExecutarCreate('curso',$dados);
 
 //lendo os cursos do professor
 $read = new Read();

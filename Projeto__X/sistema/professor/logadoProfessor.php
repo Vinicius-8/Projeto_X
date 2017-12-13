@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-if (!$_SESSION['logado'] and $_SESSION['aluno']) {
+if (!$_SESSION['logado'] and $_SESSION['aluno']) {          //verificando se é professor e se está mesmo logado
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
     die();
 }
+
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
@@ -15,14 +16,21 @@ require '../../model/Lista.php';
 
 //Capturando o id [númerico]do professor 'idNum'
 $read = new Read();
-$read->setDaft('idNum');
+
+$read->setDaft('idNum');    //idNum é o tipo de informação que quero capturar
+
 $read->ExecutarRead('professor',"where id = '{$_SESSION['id']}'"); //session 'id' é o nickname do professor na tabela professor
+
 try {
-    $_SESSION['idNum'] = $read->getResultado()[0]['idNum'];
+    $_SESSION['idNum'] = $read->getResultado()[0]['idNum']; //armazenando o id do professor na variavel de sessao
+    
     //capturando o nome do professor
-    $read->setDaft('nome');
-    $read->ExecutarRead('professor',"where idNum = '{$_SESSION['idNum']}'");
-    $nome = $read->getResultado()[0]['nome'];
+    $read->setDaft('nome');     //tipo de informação que quero capturar
+    
+    $read->ExecutarRead('professor',"where idNum = '{$_SESSION['idNum']}'");    //tabela onde quero capturar essa info.
+    
+    $nome = $read->getResultado()[0]['nome']; //armazenando a informação capturada
+    
 } catch (Exception $exc) {
     echo $exc->getTraceAsString();
     die();
@@ -31,9 +39,10 @@ try {
 
 $lista = new Lista($_SESSION['idNum']);//objeto lista
 //capturando os nomes dos cursos do professor
-$cursos = $lista->getAllCursos();
+$cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
+        
         echo "<script>var array = [";
-        for($i = 0; $i<count($cursos);$i++){
+        for($i = 0; $i<count($cursos);$i++){                //transposição de vetor de nomes de cursos do php para o js
             echo "'{$cursos[$i]['nome_curso']}',";
         }
         echo "'nada']</script>";
@@ -46,16 +55,16 @@ $cursos = $lista->getAllCursos();
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Logado PR html</title>
+        <title><?= $nome?></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/estilo_logadoProfessor.css"/>
         <script src="scripts/script_logadoProfessor.js"></script>
-        <!--passando o array php para o js-->
+        
         <script>
-            function select(idCurso){
+            function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
                 document.write("<form method='POST' action='InsertCurso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
-                document.getElementById('mular').submit();
+                document.getElementById('mular').submit();  //submit do formulario
             }
         </script>
         
@@ -98,13 +107,8 @@ $cursos = $lista->getAllCursos();
             </div>
             
             <div id="content">
-                <!--
-                <div class="container" onclick="select(2)">
-                    <img src="imgs/271 x 181.png" alt='imagem do curso'>
-                    <div class="fade"><a>Curso _ X</a></div>  
-                </div>
-                -->
-              <?php
+               
+              <?php     //listagem de todos os cursos de um determinado professor, que incluem thumb, nome e id
                 
                    for($i = 0; $i<count($cursos); $i++){
                         echo "<div class='container' onclick='select(".$cursos[$i]['id'].")' >
@@ -113,12 +117,6 @@ $cursos = $lista->getAllCursos();
                     }
                     
                 ?>
-                
-                <!-- //Criar Novo curso
-                <div class="container" style="opacity: 0.5">
-                    <img src="imgs/plus.png" style='width: 35%; margin: 40px 85px;'  alt='imagem do curso'>
-                    <div class="fade"><a>Criar Curso</a></div>
-                </div> -->
             </div>
             
             <div id="criar">
@@ -134,14 +132,14 @@ $cursos = $lista->getAllCursos();
                         nome = nomeCurso.value;
                         for (var i = 0; i < array.length; i++) {
                                if ((nome.toUpperCase()) === (array[i].toUpperCase())) {
-                                   alert('Esse nome de curso já foi criado, escolha outro cuzaum');
+                                   alert('Esse nome de curso já foi criado');
                                    nomeCurso.value = "";
                                    nomeCurso.focus();
                                 }
                         }
                     };
                     </script>
-                    <!--------------------------------------------------->
+                    
                  
                     Preço:<br>
                      R$<input type="number" name="preco" placeholder="Ex.: R$50" required><br><br>

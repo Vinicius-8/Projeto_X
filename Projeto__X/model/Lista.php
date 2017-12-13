@@ -54,7 +54,7 @@ class Lista {
      */
     public function getAllCursos() {
         $this->read->setDaft("id,nome_curso,thumb");
-        $this->read->ExecutarRead(" Projeto_x.curso ", "where id_professor = '{$this->idProfessor}'");
+        $this->read->ExecutarRead("curso ", "where id_professor = '{$this->idProfessor}'");
         return $this->read->getResultado();
     }
     
@@ -67,7 +67,7 @@ class Lista {
     public function insertAula($nome_aula, $url,$id_curso) {
         $datos = array('nome_aula'=>$nome_aula,'url'=>$url,'id_curso'=>$id_curso);
         $create = new Create();
-        $create->ExecutarCreate('Projeto_x.aula',$datos);
+        $create->ExecutarCreate('aula',$datos);
     }
     
     public function getAllAulas($idCurso){

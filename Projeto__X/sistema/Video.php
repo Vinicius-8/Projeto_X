@@ -1,5 +1,6 @@
 <?php
-
+//pagina cura
+$video = $_GET['v'];//capurando video
 
 ?>
 <!DOCTYPE html>
@@ -7,10 +8,12 @@
     <head>
         <meta charset="UTF-8">
         <title>Video</title>
+        <link rel="stylesheet" href="estilo_video.css"> 
     </head>
     <body>
-        <iframe width="500" height="300" 
-       src="https://www.youtube.com/embed/G1IbRujko-A"
+        <iframe 
+       src="https://www.youtube.com/embed/<?=$video;?>"
        frameborder="1"></iframe>
     </body>
 </html>
+<!--width="500" height="300" -->

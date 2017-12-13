@@ -1,18 +1,24 @@
 <?php
 session_start();
-if((!isset($_SESSION['idNum'])) or (!isset($_SESSION['id_curso']))){
-    header("location:../../view/attention.html?9");
+if((!isset($_SESSION['idNum'])) or (!isset($_SESSION['id_curso']))){ ///verificação do id do professor e do id do curso
+    header("location:../../view/attention.html?9"); // occorreu um problema
     die();
 }
 
-require '../../include/Defines.php';
+require '../../include/Defines.php';        //classes necessárias
 require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
 require '../../model/Lista.php';
 
-$list = new Lista($_SESSION['idNum']);
-$list->getData( $_SESSION['id_curso']);
-$aulas = $list->getAllAulas($_SESSION['id_curso']);
+$list = new Lista($_SESSION['idNum']);          //objeto lista, com o id do professor
+$list->getData( $_SESSION['id_curso']);         //pegando dados correspondentes ao id do ursos
+$aulas = $list->getAllAulas($_SESSION['id_curso']);     //pegando todas as aulas corespondentes ao curso 
+
+for($i = 0;$i<count($aulas);$i++){
+    $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
+}
+//$aulas[0]['url'] = "https://www.youtube.com/embed/".$aulas[0]['url'];
+
 ?>
 <!DOCTYPE HTML>
 <html lang=”pt-br”>
@@ -21,25 +27,24 @@ $aulas = $list->getAllAulas($_SESSION['id_curso']);
         <link href="css/estilo_playlist.css" rel="stylesheet" type="text/css"/>
         <title>Playlist</title>
         <script>
-            function salvar(){
-                thumb = document.getElementById("idthumb").value;
-                preco = document.getElementById("pre").value;
-                desc = document.getElementById("txar").value;
+            function salvar(){                                      //metodo para salvar todas as modificações
+                thumb = document.getElementById("idthumb").value;   //thumb
+                preco = document.getElementById("pre").value;       //preço
+                desc = document.getElementById("txar").value;       //text Area
                 
-                if(thumb!=="" && preco!=="" && desc!==""){
-                    document.getElementById('fora').submit();
+                if(thumb!=="" && desc!=="" && (preco!=="" || preco===0)){          //verificação de preenchimento de todos os campos
+                    document.getElementById('fora').submit();       //submit do formulario
                 }else{
-                    alert("Os campos: thumb, preço e descição devem ser preenchidos");
+                    alert("Os campos: thumb, preço e descição devem ser preenchidos"); //caso exista campo vazio
                 }
-                
             }
             
-            function adicionar(){
-                niu = document.getElementById("new").value;
-                url = document.getElementById("url").value;
+            function adicionar(){                               //metodo para adicionar uma nova aula no curso
+                niu = document.getElementById("new").value;     //nome da aula 
+                url = document.getElementById("url").value;     //url da aula
                 
-                if (niu!=="" && url!=="") {
-                    document.getElementById("aula").submit();
+                if (niu!=="" && url!=="") {                     //verificação de preenchimento dos campos
+                    document.getElementById("aula").submit();   //submit do formulario
                 } 
             }
         </script>
@@ -50,18 +55,18 @@ $aulas = $list->getAllAulas($_SESSION['id_curso']);
         <button id="save" onclick="salvar()">Salvar tudo</button>
         
         <div id="esquerda">
-            <?php 
-            echo "<div id='thumb' style='background-image: url(".$list->getThumb().")'> 
+            <?php                                                               //pegando a thumb correspondente ao curso
+            echo "<div id='thumb' style='background-image: url(".$list->getThumb().")'>  
             </div>";
             ?>
-            <h2>Aulas: <?= $list->getAulas()?></h2>
-            <h2>Formulários: <?= $list->getForm()?></h2>
-            <h2>Alunos: <?= $list->getAlunos()?></h2>
+            <h2>Aulas: <?= $list->getAulas()?></h2>                 <!--Pegando o numero de aulas-->
+            <h2>Formulários: <?= $list->getForm()?></h2>           <!--Pegando o numero de Formularios--> 
+            <h2>Alunos: <?= $list->getAlunos()?></h2>               <!--Pegando o numero de alunos-->
             <h2>Descrição:</h2>
             <textarea name="desc" id="txar" placeholder="sobre o que é esse curso?" form="fora" required></textarea>
-            <?php
-            echo "<script>
-                document.getElementById('txar').value ='".$list->getDesc()."';
+            <?php                                                                   //Escrevendo a descrição do curso
+            echo "<script>  
+                document.getElementById('txar').value ='".$list->getDesc()."';      
             </script>";
             ?>
         </div>
@@ -72,24 +77,15 @@ $aulas = $list->getAllAulas($_SESSION['id_curso']);
             
             <form id="fora" method="POST" action="SaveAll.php">
                 <span class="spa">Thumb:</span> <input type="text" name="thumb" id="idthumb" required><br><br><br>
-                <span class="spa">Preço:</span> <input type="text" name="preco" id="pre" required>
+                <span class="spa">Preço:</span> <input type="number" name="preco" id="pre" required>
             </form>
-            <?php 
+            <?php                                               //preço do curso
             echo "<script>document.getElementById('pre').value = '".$list->getPreco()."'; document.getElementById('idthumb').value =' ".$list->getThumb() ."'; </script>";
             ?>
            
             <div id="aulas">
                 <h2>Aulas: </h2>
-                <!--
-                <div class="um">
-                    <span class="title"><a href="#">Aula 1: Macacos Albinos dos alpes suiços da america latina</a></span>
-                </div>
-                -->
-                <?php
-                            for($i=0;$i<count($aulas);$i++){
-                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='".$aulas[$i]['url']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
-                            }
-                ?>
+                
                 <div id="new">
                     
                     <!--inserir aula-->
@@ -100,6 +96,13 @@ $aulas = $list->getAllAulas($_SESSION['id_curso']);
                     
                     </form>
                 </div>
+                
+                <?php                   //Mostrando todas as aulas já criadas
+                            for($i=0;$i<count($aulas);$i++){
+                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../Video.php?v=".$aulas[$i]['url']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                            }
+                ?>
+                
                 <div>
         </div>
     </div>
