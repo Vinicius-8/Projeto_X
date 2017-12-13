@@ -68,7 +68,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
             }
         </script>
         
-    </head>
+<!--    </head>
     <body>
         <header>        
             <a href="../../index.html"><div class="logo"> 
@@ -90,7 +90,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                 <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
                 <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
             </div>        
-        </header>
+        </header>-->
         
         <div id="area">
             

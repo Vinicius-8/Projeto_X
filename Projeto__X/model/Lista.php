@@ -37,11 +37,9 @@ class Lista {
         $this->read->setDaft("*");
         $this->read->ExecutarRead('curso', "where id = '{$idCurso}' and id_professor = '{$this->idProfessor}' ");
         $res = $this->read->getResultado();
-        $this->alunos = $res[0]['quant_alunos'];
         //$this->aulas =$res[0]['numero_aulas'];
         $this->aulas = count($this->getAllAulas($idCurso));
         $this->desc =$res[0]['descricao'];
-        $this->form =$res[0]['numero_form'];
         $this->nome =$res[0]['nome_curso'];
         $this->preco =$res[0]['preco'];
         $this->thumb =$res[0]['thumb'];

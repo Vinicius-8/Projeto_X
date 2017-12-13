@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if((!isset($_SESSION['idNum'])) or (!isset($_SESSION['id_curso']))){ ///verificação do id do professor e do id do curso
     header("location:../../view/attention.html?9"); // occorreu um problema
     die();
