@@ -6,7 +6,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     background-image: url(../imagens/cafee.jpg);
     background-attachment: fixed;
-    background-size: auto;
+    background-size: cover;
     background-repeat: no-repeat;    
 }
 

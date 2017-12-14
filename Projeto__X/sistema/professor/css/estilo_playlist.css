@@ -2,116 +2,182 @@
     Created on : 27/11/2017, 16:34:55
     Author     : Vinicius
 */
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Quicksand');
 
 * {
    padding: 0;
    margin: 0;
 }
 
-#save {
-    position: fixed;
-    top:0;
-    right: 18px;
-    padding:8px;    
+body {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: absolute;
     font-family: sans-serif;
-    font-size: 13pt;
+    background-image: url(../../../view/imagens/cafeeb.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 div#area {
-    position: absolute;
-    background-color: gray;
+    display: block;
+    float: left;
+    position: relative;
     height: 100%;
-    width: 1349px;
+    width: 100%;
 }
+
 /*esquerda*/
 div#esquerda {
-    width: 300px;
+    width: 19.9%;
     height: 100%;
-    position: absolute;
+    position: relative;
     float: left;
-    background-color: steelblue;
+    border-right: 1px solid white;
 }
+
 div#esquerda #thumb {
     background-color: #2F5778;
     width: 90%;
     height: 200px;
-    margin: 15px;
+    margin: 5% auto;
 }
+
 div#esquerda h2{
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
     color: white;
-    margin: 23px 15px;
+    margin: 10%;
 }
 
 div#esquerda #txar {
-    margin-left: 10px;
-    font-size: 16pt;
+    width: 90%;
+    margin-left: 4%;
+    font-size: 12pt;
+    padding: 1%;
+    border: none;
+    background: none;
+    border-bottom: 2px solid white;
+    color: rgba(250, 250, 250, 0.7);
+    font-family: sans-serif;
 }
+
 
 /*Centro*/
 div#centro {
-    width: 1049px;
+    width: 80%;
     height: 100%;
-    margin: 0 auto;
-    background-color: chartreuse;
-    background-color: #2F5778;
+    position: relative;
     float: right;
 }
+
 div#centro input[type=text] {
-    position: absolute;
+    position: relative;
     font-family: sans-serif;
-    font-size: 23pt;
-    margin-top: 50px;
-    margin-left: 350px;
-    background-color: #1F3A50;
-    color: whitesmoke;
-    height: 30px;   
+    font-size: 17pt;
+    height: 20%;   
+    border: none;
+    background: none;
+    border-bottom: 2px solid white;
+    color: white;
 }
+
+div#centro input[type=text]:focus {
+    background-color: rgba(250, 250, 250, 0.2);
+}
+
 div#centro input[type=number] {
-    position: absolute;
+    position: relative;
     font-family: sans-serif;
-    font-size: 23pt;
-    margin-top: 50px;
-    margin-left: 350px;
-    background-color: #1F3A50;
-    color: whitesmoke;
+    font-size: 17pt;
     height: 30px;   
+    border: none;
+    background: none;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+div#centro input[type=number]:focus {
+    background-color: rgba(250, 250, 250, 0.2);
 }
 
 div#centro .spa {
-    position: absolute;
+    font-size: 20pt;
+    position: relative;
+    padding: 2%;
     color: whitesmoke;
     font-family: sans-serif;
-    font-size: 26pt;
-    margin-top: 50px;
     display: inline-block;
-    margin-left: 230px;
+}
+
+.sp {
+    font-size: 17pt;
+    position: relative;
+    padding: 1%;
+    color: whitesmoke;
+    font-family: sans-serif;
+    display: inline-block;
+    margin-left: 33%;
+}
+
+.sp:nth-child(1) {
+    margin-top: 2%;
+}
+
+.titulo_curso {
+    font-size: 30pt;
+    font-family: 'Josefin Sans', sans-serif;
+    color: whitesmoke;
+    margin-left: 25%;
+}
+
+#save {
+    display: block;
+    margin: 2%;
+    float: right;
+    font-family: sans-serif;
+    font-size: 13pt;
+    padding: 10px;
+    border: 1px solid;
+    background-color: rgba(250, 250, 250, 0.1);
+    width: 20%;
+    color: white;
+}
+
+#save:hover {
+    background-color: rgba(250, 250, 250, 0.3);
+    cursor: pointer;
+}
+
+div#centro #top {
+    position: relative;
+    width: 100%;
+    height: 30%;
+    border-bottom: 1px solid white;
 }
 
 div#centro #aulas {
-    position: absolute;
-     width: 1049px;
-     height: 63%;
-     background-color: #2F5778;
-     box-shadow: #303030 0px -10px 40px;
-     bottom: 0;
+    position: relative;
+    width: 100%;
+    height: 70%;
+    overflow: auto;
 }
+
 div#centro #aulas h2{
+    padding: 1% 1% 1% 5%;
     font-family: sans-serif;
     color: whitesmoke;
     font-size: 24pt;
-    margin-top: 30px;
-    margin-left: 30px;
 }
 
 div#centro #aulas .um {
-    background-color: #294B68;
-    margin-left: 100px;
-    margin-top: 30px;
-    display: inline-block;
-    padding: 5px 10px;
-    float: left;
-    clear: both;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: 3%;
+    padding: 1%;
 }
 
 div#centro #aulas .um .title {
@@ -124,37 +190,40 @@ div#centro #aulas .um .title a {
     text-decoration: none;
     color: whitesmoke;
 }
+
 div#centro #aulas .um:hover{
-     background-color: transparent;
-     box-shadow: #303030 0px 10px 40px;
+     box-shadow: #303030 0px 1px 4px;
 }
+
 div#centro #aulas #new {
-    background-color: #294B68;
-    margin-left: 100px;
-    margin-top: 30px;
-    display: inline-block;
-    padding: 5px 10px;
-    float: left;
-    clear: both;
+    display: inline;
 }
+
 div#centro #aulas #new #tit {
     font-size: 18pt;
     font-family: sans-serif;
     color: whitesmoke;
+    margin-left: 5%;
 }
+
 div#centro #aulas #new input{
-    position: relative;
-    font-size: 17pt;
-    margin: 0;
-    height: 30px;
-    margin-right: 5px;
-    padding-left: 5px;
+    padding: 1%;
+    font-size: 15pt;
 }
 
 div#centro #aulas #new button {
-    top: 0;
-    padding: 5px;
+    padding: 1%;
+    margin: 1%;
     font-size: 14pt;
-    background-color: whitesmoke;
-    
+    padding: 10px;
+    border: 1px solid;
+    background-color: rgba(250, 250, 250, 0.1);
+    font-size: 13pt;
+    width: 20%;
+    color: white;   
+}
+
+div#centro #aulas #new button:hover {
+    background-color: rgba(250, 250, 250, 0.3);
+    cursor: pointer;
 }

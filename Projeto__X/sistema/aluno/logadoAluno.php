@@ -3,7 +3,7 @@ session_start();
 
 if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
     echo "<script>alert('Aluno nao logado')</script>";
-    header("location:../view/login.html");
+    header("location:../view/login.php");
 }
     echo "Aluno logado com sucesso<br>";
     echo "ID: ".$_SESSION['id'];

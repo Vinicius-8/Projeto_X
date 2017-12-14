@@ -39,10 +39,11 @@ body {
     margin: 0 auto;
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     font-family: sans-serif;
     background-image: url(../imagens/cafee.jpg);
-    background-size: auto;
+    background-attachment: fixed;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
