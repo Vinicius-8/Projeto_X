@@ -1,6 +1,7 @@
 <?php
-//pagina cura
+//pagina crua
 $video = $_GET['v'];//capurando video
+$nome = $_GET['a'];//capurando video
 
 ?>
 <!DOCTYPE html>
@@ -14,6 +15,6 @@ $video = $_GET['v'];//capurando video
         <iframe 
        src="https://www.youtube.com/embed/<?=$video;?>"
        frameborder="1"></iframe>
+        <h1><?=$nome?></h1>
     </body>
 </html>
-<!--width="500" height="300" -->
