@@ -24,9 +24,10 @@ for($i = 0;$i<count($aulas);$i++){
 <!DOCTYPE HTML>
 <html lang=”pt-br”>
     <head>
+        
         <meta charset=”UTF-8”>
         <link href="css/estilo_playlist.css" rel="stylesheet" type="text/css"/>
-        <title>Playlist</title>
+        <title><?=$list->getNome()?></title>
         <script>
             function salvar(){                                      //metodo para salvar todas as modificações
                 thumb = document.getElementById("idthumb").value;   //thumb
@@ -100,7 +101,7 @@ for($i = 0;$i<count($aulas);$i++){
                 
                 <?php                   //Mostrando todas as aulas já criadas
                             for($i=0;$i<count($aulas);$i++){
-                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../Video.php?v=".$aulas[$i]['url']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
                             }
                 ?>
                 

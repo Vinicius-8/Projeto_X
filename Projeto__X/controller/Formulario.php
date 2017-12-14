@@ -8,8 +8,11 @@ if (isset($_POST)) {
 
     $read->ExecutarRead('aluno',"where id ='{$id}'");
     $consulta_aluno = $read->getResultado();
-    $read->ExecutarRead('professor',"where id ='{$id}'");
-    $consulta_prof = $read->getResultado();
+    if (!$consulta_aluno) {
+        $read->ExecutarRead('professor',"where id ='{$id}'");
+        $consulta_prof = $read->getResultado();
+    }
+    
     
     if (!empty($consulta_aluno) or !empty($consulta_prof)){ 
         echo "<script>window.location.href = '../view/attention.html?5';</script>";
@@ -60,18 +63,27 @@ if (isset($_POST)) {
     //Condicional de [1]Aluno/[2]Professor
     if ($tipo) {
         $aluno = array('id'=> $id, 'nome'=> $nome, 'sobrenome'=> $sobrenome, 'data_nasc'=> $nasc, 'email'=> $email, 'telefone'=> $telefone, 'senha'=> md5($senha));
-        $create->ExecutarCreate('projeto_x.aluno', $aluno);
-        //aluno cadastrado com sucesso          
+        $create->ExecutarCreate('aluno', $aluno);
+        //aluno cadastrado com sucesso      
+        $_SESSION['id'] = $id;
+        $_SESSION['logado'] = true;
+        $_SESSION['aluno'] = true;
         echo "<script>window.location.href = '../view/attention.html?0';</script>";
+        die();
+        
     }else{
         $prof = array('id'=> $id, 'nome'=> $nome, 'sobrenome'=> $sobrenome, 'data_nasc'=> $nasc, 'email'=> $email, 'telefone'=> $telefone, 'senha'=> md5($senha));
         //inserção dos dados no banco de dados (ah vá)
-        $create->ExecutarCreate('projeto_x.professor', $prof);
+        $create->ExecutarCreate('professor', $prof);
         
         $_SESSION['id'] = $id;
+        $_SESSION['logado'] = true;
+        $_SESSION['aluno'] = false;
         //professor cadastrado com sucesso
         echo "<script>window.location.href = '../view/attention.html?1';</script>";
+        die();
     }
+    
     
     
 } else {

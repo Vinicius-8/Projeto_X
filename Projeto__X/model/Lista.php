@@ -8,8 +8,8 @@
 
 class Lista {
     
-    private $idProfessor; //id do professor na tabela professor 
-    
+    private $idUsuario; //id do usuario na tabela (aluno ou professor3)
+    private $tipo;  //aluno ou professor
     private $nome, $preco;//nome e preço na tabela cursos
     private $aulas,$form,$alunos,$desc,$thumb;//atributos da tabela cursos
     /**
@@ -21,11 +21,12 @@ class Lista {
     
     /**
      * 
-     * @param type $idProfessor id do professor na tabela professor
-     * @param type $idCurso id do curso na tabela curso
+     * @param type $idUsuario ID do usuario em sua respectiva tabela
+     * @param boolean $tipo  tipo de usuario (professor ou aluno)
      */
-    function __construct($idProfessor) {
-        $this->idProfessor = $idProfessor;
+    function __construct($idUsuario, $tipo) {
+        $this->idUsuario = $idUsuario;
+        $this->tipo = $tipo;
         $this->read = new Read();
     }
     
@@ -35,9 +36,8 @@ class Lista {
      */
     public function getData($idCurso) {
         $this->read->setDaft("*");
-        $this->read->ExecutarRead('curso', "where id = '{$idCurso}' and id_professor = '{$this->idProfessor}' ");
+        $this->read->ExecutarRead('curso', "where id = '{$idCurso}' and id_professor = '{$this->idUsuario}' ");
         $res = $this->read->getResultado();
-        //$this->aulas =$res[0]['numero_aulas'];
         $this->aulas = count($this->getAllAulas($idCurso));
         $this->desc =$res[0]['descricao'];
         $this->nome =$res[0]['nome_curso'];

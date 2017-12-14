@@ -1,50 +1,52 @@
 * {
-    width: 0;
     padding: 0;
     margin: 0;
 }
 
-body {
-    margin: 0 auto;
-    width: 100%;
-    position: absolute;
-    font-family: sans-serif;
-
+body #cursos{
+    background-color: #f2f2f2;
+    width: 1250px;
+    height: 500px;
+    margin-left: 50px;
+    margin-top: 50px;
 }
 
-nav {
-    width: 100%;
-    height: 52px;
+div#cursos .container{
+    background-color: graytext;
+    width: 20%;
+    height: 36%;
+    margin-top: 45px;
+    margin-left: 45px;
+    float: left;
+    cursor: pointer;
     position: relative;
+    overflow: hidden;
+}
+div#cursos .container img {
+    max-width: 270px;
+    max-height: 180px;
+    
+}
+
+div#cursos .container .fade{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    background-color: rgba(0,0,0,0.2);
+    background-image: linear-gradient(rgba(250,250,250,0.1), rgba(0,0,0,0.4));
+    
+}
+div#cursos .container .fade a{
+    font-family: sans-serif;
+    font-size: 20pt;
+    position: absolute;
+    margin:15px;
+    color: whitesmoke;
+}
+div#cursos .container:hover .fade{
+    display: block;
 }
 
 
-nav ul {
-
-    display: inline;
-
-}
-
-nav li {
-    width: auto;
-    padding: 2px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    display: inline-block;
-    margin-right: 5px;
-    background-color: red;
-}
-
-a {
-    text-decoration: none;
-    color: aliceblue;
-    padding: inherit;
-}
-
-nav li:hover {
-    background-color: #c10000;
-}
-
-a:hover {
-    color: #ccc;
-}

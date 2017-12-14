@@ -1,7 +1,9 @@
 <?php
 session_start();
-
-if (!$_SESSION['logado'] and $_SESSION['aluno']) {          //verificando se é professor e se está mesmo logado
+if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
+    header("location:../../index.html");
+    die();
+}else if (!$_SESSION['logado'] and $_SESSION['aluno']) {          //verificando se é professor e se está mesmo logado
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
     die();
@@ -36,7 +38,7 @@ try {
     die();
 }
 
-
+//----listagem dos cursos--------
 $lista = new Lista($_SESSION['idNum']);//objeto lista
 //capturando os nomes dos cursos do professor
 $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
@@ -53,7 +55,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
         
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <title><?= $nome?></title>
         <meta charset="UTF-8">

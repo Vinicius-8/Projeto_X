@@ -41,12 +41,8 @@ id_curso int not null,
 primary key(id),
 foreign key(id_curso) references curso(id));
 
-use Projeto_X;
-select * from curso;
-
-select * from professor; 	 	
-select * from aluno;
-select * from aula;	
-drop table aula;	
-drop table curso;
-
+create table inscrito_em(
+id_aluno int not null,
+id_curso int not null,
+foreign key(id_aluno) references aluno(id),
+foreign key(id_curso) references curso(id));
