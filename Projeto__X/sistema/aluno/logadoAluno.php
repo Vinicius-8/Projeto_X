@@ -1,18 +1,16 @@
 <?php
 session_start();
-<<<<<<< HEAD
 
 if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
     echo "<script>alert('Aluno nao logado')</script>";
     header("location:../view/login.php");
-=======
+
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
     header("location:../../index.html");
     die();
 }else if (!$_SESSION['logado'] and !$_SESSION['aluno']) { //verificação de logado e se é aluno
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
->>>>>>> a78e0195dcf27af2654cd0f965eb7c79e6eaa7da
 }
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';

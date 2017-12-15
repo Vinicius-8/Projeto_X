@@ -70,7 +70,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
             }
         </script>
         
-<!--    </head>
+    </head>
     <body>
         <header>        
             <a href="../../index.html"><div class="logo"> 
@@ -92,7 +92,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                 <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
                 <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
             </div>        
-        </header>-->
+        </header>
         
         <div id="area">
             
@@ -104,6 +104,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                     <botton onClick="criarDiv()">Criar Curso</botton>
                 </div>
             </div>
+            
             <div id="topo"> 
                 <h2 id="title">Meus cursos</h2>
             </div>
@@ -150,6 +151,6 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                     <input type="submit" value="Criar Curso" >
                 </form>
             </div>
-        </div>
+        </div>        
     </body>
 </html>
