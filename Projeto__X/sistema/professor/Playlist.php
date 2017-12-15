@@ -54,17 +54,17 @@ for($i = 0;$i<count($aulas);$i++){
 <body>
     
     <div id="area">
-        <button id="save" onclick="salvar()">Salvar tudo</button>
         
-        <div id="esquerda">
+        
+        <div id="esquerda">            
             <?php                                                               //pegando a thumb correspondente ao curso
             echo "<div id='thumb' style='background-image: url(".$list->getThumb().")'>  
             </div>";
             ?>
-            <h2>Aulas: <?= $list->getAulas()?></h2>                 <!--Pegando o numero de aulas-->
-            <h2>Formulários: <?= $list->getForm()?></h2>           <!--Pegando o numero de Formularios--> 
-            <h2>Alunos: <?= $list->getAlunos()?></h2>               <!--Pegando o numero de alunos-->
-            <h2>Descrição:</h2>
+            <h2>AULAS: <?= $list->getAulas()?></h2>                 <!--Pegando o numero de aulas-->
+            <h2>FORMULÁRIOS: <?= $list->getForm()?></h2>           <!--Pegando o numero de Formularios--> 
+            <h2>ALUNOS: <?= $list->getAlunos()?></h2>               <!--Pegando o numero de alunos-->
+            <h2>DESCRIÇÃO:</h2>
             <textarea name="desc" id="txar" placeholder="sobre o que é esse curso?" form="fora" required></textarea>
             <?php                                                                   //Escrevendo a descrição do curso
             echo "<script>  
@@ -75,16 +75,18 @@ for($i = 0;$i<count($aulas);$i++){
         
         
         <div id="centro">
-            <span class="spa">Nome:</span> <span class="spa" style="margin-left: 350px;"><?= $list->getNome()?></span><br><br><br>
+            <div id="top">
+                <span class="spa"></span> <span class="titulo_curso"><b><?= $list->getNome()?></b></span><button id="save" onclick="salvar()">Salvar tudo</button><br>
+
+                <form id="fora" method="POST" action="SaveAll.php">
+                    <span class="sp">Thumb:</span><input type="text" name="thumb" id="idthumb" required><br>
+                    <span class="sp">Preço:</span><input type="number" name="preco" id="pre" required>
+                </form>
+                <?php                                               //preço do curso
+                echo "<script>document.getElementById('pre').value = '".$list->getPreco()."'; document.getElementById('idthumb').value =' ".$list->getThumb() ."'; </script>";
+                ?>
+            </div>
             
-            <form id="fora" method="POST" action="SaveAll.php">
-                <span class="spa">Thumb:</span> <input type="text" name="thumb" id="idthumb" required><br><br><br>
-                <span class="spa">Preço:</span> <input type="number" name="preco" id="pre" required>
-            </form>
-            <?php                                               //preço do curso
-            echo "<script>document.getElementById('pre').value = '".$list->getPreco()."'; document.getElementById('idthumb').value =' ".$list->getThumb() ."'; </script>";
-            ?>
-           
             <div id="aulas">
                 <h2>Aulas: </h2>
                 
@@ -105,7 +107,7 @@ for($i = 0;$i<count($aulas);$i++){
                             }
                 ?>
                 
-                <div>
+            </div>
         </div>
     </div>
 </body>
