@@ -1,13 +1,23 @@
 <?php
 session_start();
 
+<<<<<<< HEAD
+=======
+if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
+    echo "<script>alert('Aluno nao logado')</script>";
+    header("location:../view/login.php");
+
+>>>>>>> 43a12e7e3fef880047d5ae43f74f069b4ab7e263
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
     header("location:../../index.html");
     die();
 }else if (!$_SESSION['logado'] and !$_SESSION['aluno']) { //verificação de logado e se é aluno
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 43a12e7e3fef880047d5ae43f74f069b4ab7e263
 }
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';

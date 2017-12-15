@@ -53,6 +53,28 @@ for($i = 0;$i<count($aulas);$i++){
     </head>
 <body>
     
+    <header>        
+            <a href="../../index.html"><div class="logo"> 
+                <svg> 
+                    <symbol id="s-text"> 
+                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                    <g> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                    </g> 
+                </svg> 
+            </div></a>
+        
+            <div class="links">
+                <a href="../../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
+                <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
+                <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+            </div>        
+        </header>
+    
     <div id="area">
         
         
