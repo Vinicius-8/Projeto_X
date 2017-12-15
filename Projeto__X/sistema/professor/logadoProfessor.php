@@ -39,7 +39,7 @@ try {
 }
 
 //----listagem dos cursos--------
-$lista = new Lista($_SESSION['idNum']);//objeto lista
+$lista = new Lista($_SESSION['idNum'],true);//objeto lista
 //capturando os nomes dos cursos do professor
 $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
         

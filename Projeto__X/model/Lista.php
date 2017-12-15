@@ -22,7 +22,7 @@ class Lista {
     /**
      * 
      * @param type $idUsuario ID do usuario em sua respectiva tabela
-     * @param boolean $tipo  tipo de usuario (professor ou aluno)
+     * @param boolean $tipo  tipo de usuario (professor ou aluno) professor = true
      */
     function __construct($idUsuario, $tipo) {
         $this->idUsuario = $idUsuario;
@@ -52,7 +52,7 @@ class Lista {
      */
     public function getAllCursos() {
         $this->read->setDaft("id,nome_curso,thumb");
-        $this->read->ExecutarRead("curso ", "where id_professor = '{$this->idProfessor}'");
+        $this->read->ExecutarRead("curso ", "where id_professor = '{$this->idUsuario}'");
         return $this->read->getResultado();
     }
     

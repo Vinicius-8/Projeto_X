@@ -11,14 +11,14 @@ require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
 require '../../model/Lista.php';
 
-$list = new Lista($_SESSION['idNum']);          //objeto lista, com o id do professor
+$list = new Lista($_SESSION['idNum'],true);          //objeto lista, com o id do professor
 $list->getData( $_SESSION['id_curso']);         //pegando dados correspondentes ao id do ursos
 $aulas = $list->getAllAulas($_SESSION['id_curso']);     //pegando todas as aulas corespondentes ao curso 
 
 for($i = 0;$i<count($aulas);$i++){
     $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
 }
-//$aulas[0]['url'] = "https://www.youtube.com/embed/".$aulas[0]['url'];
+
 
 ?>
 <!DOCTYPE HTML>
