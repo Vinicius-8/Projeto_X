@@ -1,0 +1,66 @@
+/* 
+    Created on : 15/12/2017, 13:11:54
+    Author     : Vinicius
+*/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+#esquer {
+    position: fixed;
+    width: 38%;
+    height: auto;
+    background-color: #e3e3e3;
+    margin-top: 50px;
+    float: left;
+    
+}
+#esquer h1 {
+    margin-left: 17%;
+}
+#esquer h2 {
+    margin-left: 17%;
+}
+#esquer .pan {
+    margin:45px;
+}
+#desc {
+    position: relative;
+    display: block;
+    margin-left: 30px;
+    padding: 10px;
+}
+div#esquer #thumb {
+    background-color: #2F5778;
+    width: 70%;
+    height: 250px;
+    margin: 5% auto;
+}
+
+#direit {
+    width: 62%;
+    height:auto;
+    background-color: #2f2f2f;
+    float:right;
+}
+
+#direit .um{
+    display: inline-block;
+    float: left;
+    clear:left;
+    width: auto;
+    height: 30px;
+    margin: 20px 10px;
+    padding: 5px;
+}
+#direit .um title{
+    
+}
+#direit .um .title a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+#direit .um:hover{
+    background-color:#1f1f1f; 
+}

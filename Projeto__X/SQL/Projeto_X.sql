@@ -46,4 +46,3 @@ id_aluno int not null,
 id_curso int not null,
 foreign key(id_aluno) references aluno(idNum),
 foreign key(id_curso) references curso(id));
-

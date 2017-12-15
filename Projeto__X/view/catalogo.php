@@ -12,7 +12,13 @@ $cursos = $listagem->listagemParcial();
     <head>
         <meta charset="UTF-8">
         <link href="css/estilo_catalogo.css" rel="stylesheet" type="text/css"/>
-        <title></title>
+        <title>Catalogo de Cursos</title>
+        <script>
+            function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
+                document.write("<form method='POST' action='curso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
+                document.getElementById('mular').submit();  //submit do formulario
+            }
+        </script>
     </head>
     <body>
         <div id="cursos">

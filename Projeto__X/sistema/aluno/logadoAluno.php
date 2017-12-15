@@ -1,18 +1,13 @@
 <?php
 session_start();
-<<<<<<< HEAD
 
-if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
-    echo "<script>alert('Aluno nao logado')</script>";
-    header("location:../view/login.php");
-=======
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
     header("location:../../index.html");
     die();
 }else if (!$_SESSION['logado'] and !$_SESSION['aluno']) { //verificação de logado e se é aluno
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
->>>>>>> a78e0195dcf27af2654cd0f965eb7c79e6eaa7da
+
 }
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
@@ -47,7 +42,7 @@ try {
 <html lang="pt-br"> 
  <head> 
   <TITLE>Título da página</TITLE> 
-  <link href="estilo_logadoAluno.css" rel="stylesheet" type="text/css"/>
+  <link href="css/estilo_logadoAluno.css" rel="stylesheet" type="text/css"/>
  </HEAD> 
 
  <BODY> 
@@ -55,7 +50,7 @@ try {
          <h2><?=$nome?></h2>
          <div id="bot">
              <botton>Meus Cursos</botton> <br>
-             <botton>Mais Cursos</botton> 
+             <botton ><a href="../../view/catalogo.php">Mais Cursos<a></botton> 
          </div>
      </div>
      <div id="topo">

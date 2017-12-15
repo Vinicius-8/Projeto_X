@@ -67,7 +67,11 @@ class Lista {
         $create = new Create();
         $create->ExecutarCreate('aula',$datos);
     }
-    
+    /**
+     * 
+     * @param string $idCurso id do Curso no BD
+     * @return array array com todas as aulas
+     */
     public function getAllAulas($idCurso){
         $this->read->setDaft("id,nome_aula,url");
         $this->read->ExecutarRead('aula', "where id_curso = '{$idCurso}'");
