@@ -85,11 +85,38 @@ div#topo {
     border-bottom: 1px solid white;
 }
 
+
+div#topo .tit-h2 {
+    position: relative;
+    display: inline-block;
+    width: 40%;
+    height: 100%;
+}
+
 div#topo h2{
     color: white;
     font-family: 'Quicksand', sans-serif;
-    margin-top: 1%;
-    margin-left: 5%;
+    padding: 3.5%;
+    margin-left: 10%;
+}
+
+.sair {
+    color: white;
+    margin: 1.5% 2% 1% 1%;
+    padding: 1%;
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    float: right;
+}
+
+.sair a {
+    text-decoration: none;
+    color: white;
+}
+
+.sair:hover{
+    border-bottom: 2px solid white;
 }
 
 /*Content*/
@@ -188,7 +215,7 @@ div#criar #form textarea{
 
 div#criar #form input[type=submit] {
     width: 200px;
-    height: 60px;
+    height: 65px;
     margin-top: 3%;
     font-family: 'Quicksand', sans-serif;
     border: 1px solid;  

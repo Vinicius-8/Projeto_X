@@ -21,6 +21,31 @@ $cursos = $listagem->listagemParcial();
         </script>
     </head>
     <body>
+        <header>        
+            <a href="../index.html"><div class="logo"> 
+                <svg> 
+                    <symbol id="s-text"> 
+                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                    <g> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                    </g> 
+                </svg> 
+            </div></a>
+        
+            <div class="links">
+                <a href="sobreNos.html" class="topheader">SOBRE NÓS</a>
+                <a href="faleCon.html" class="topheader">FALE CONOSCO</a>
+                <a href="pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+            </div>
+        
+        </header>
+        
+        <h1>Nossos cursos</h1>
+        
         <div id="cursos">
             <?php
                      //listagem de todos os cursos de um determinado professor, que incluem thumb, nome e id
@@ -34,5 +59,9 @@ $cursos = $listagem->listagemParcial();
                 
             ?>
         </div>
+        
+        <footer>
+            <p>'nome do site' &#9400  2017<br>Desenvolvido por Vinicius Araújo e Luis Santos</p>
+    </footer>
     </body>
 </html>

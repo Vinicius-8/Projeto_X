@@ -28,6 +28,30 @@ $aulas = $lista->getAllAulas($idCurso);
         </script>
     </head>
     <body>
+        
+        <header>        
+            <a href="../index.html"><div class="logo"> 
+                <svg> 
+                    <symbol id="s-text"> 
+                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                    <g> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                    </g> 
+                </svg> 
+        </div></a>
+        
+        <div class="links">
+            <a href="sobreNos.html" class="topheader">SOBRE NÓS</a>
+            <a href="faleCon.html" class="topheader">FALE CONOSCO</a>
+            <a href="pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+        </div>
+        
+    </header>
+        
         <div id="esquer">
             <?php                                                               //pegando a thumb correspondente ao curso
             echo "<div id='thumb' style='background-image: url(".$lista->getThumb().")'>  
@@ -35,10 +59,10 @@ $aulas = $lista->getAllAulas($idCurso);
             
             ?>
             <h1><?=$lista->getNome()?></h1><br>
-            <h2>Preço: <?=$lista->getPreco()?></h2><br>
-            <span class="pan">Aulas:<?=$lista->getAulas()?></span> <span class="pan">Formularios:0</span> <span class="pan">Alunos:0</span><br>
-            <br><span class="pan">descrição:</span><br><span id="desc"><?=$lista->getDesc()?></span>
-            <button onclick="select(<?=$idCurso?>)">Comprar Curso</button>
+            <h2>Preço: R$ <?=$lista->getPreco()?>,00</h2><br>
+            <span class="pan">AULAS: <?=$lista->getAulas()?></span> <span class="pan">FORMULÁRIOS: 0</span> <span class="pan">ALUNOS: 0</span><br>
+            <br><span class="pan">DESCRIÇÃO:</span><br><span id="desc"><?=$lista->getDesc()?></span>
+            <button onclick="select(<?=$idCurso?>)">COMPRAR CURSO</button>
         </div>
         <div id="direit">
             <?php                   //Mostrando todas as aulas já criadas

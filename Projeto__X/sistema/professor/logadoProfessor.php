@@ -106,7 +106,10 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
             </div>
             
             <div id="topo"> 
-                <h2 id="title">Meus cursos</h2>
+                <div class="tit-h2"><h2 id="title">Meus cursos</h2></div>
+                
+                <div class="sair"><h3><a href="#">SAIR</a><h3></div>
+
             </div>
             
             <div id="content">
