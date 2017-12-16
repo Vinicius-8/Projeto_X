@@ -13,7 +13,7 @@ $nome = $_GET['a'];//capurando video
     </head>
     <body>
         <header>        
-            <a href="../../index.html"><div class="logo"> 
+            <a href="index.php"><div class="logo"> 
                 <svg> 
                     <symbol id="s-text"> 
                         <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 

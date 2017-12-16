@@ -1,23 +1,11 @@
 <?php
 session_start();
-
-<<<<<<< HEAD
-=======
-if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
-    echo "<script>alert('Aluno nao logado')</script>";
-    header("location:../view/login.php");
-
->>>>>>> 43a12e7e3fef880047d5ae43f74f069b4ab7e263
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
     header("location:../../index.html");
     die();
 }else if (!$_SESSION['logado'] and !$_SESSION['aluno']) { //verificação de logado e se é aluno
     echo "<script>alert('Professor nao logado')</script>";
     header("location:../../view/login.html");
-<<<<<<< HEAD
-
-=======
->>>>>>> 43a12e7e3fef880047d5ae43f74f069b4ab7e263
 }
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
@@ -47,6 +35,10 @@ try {
     echo $exc->getTraceAsString();
     die();
 }
+
+$lis = new Lista( $_SESSION['idNum'],false);
+$cursos = $lis->getAllCursos();
+var_dump($cursos);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br"> 
@@ -67,7 +59,15 @@ try {
          <h2>Meus Cursos</h2>
      </div>
      <div id="cursos">
-         1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33
+         <?php     //listagem de todos os cursos de um determinado professor, que incluem thumb, nome e id
+                
+                   for($i = 0; $i<count($cursos); $i++){
+                        echo "<div class='container' onclick='select(".$cursos[$i]['id'].")' >
+                    <img src='".$cursos[$i]['thumb']."'  alt='Thumb do Curso'> "
+                                . "<div class='fade'><a>".$cursos[$i]['nome_curso']."</a></div></div>";
+                    }
+                    
+                ?>
      </div>
     </BODY> 
 </HTML>
