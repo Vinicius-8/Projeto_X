@@ -67,7 +67,7 @@ $aulas = $lista->getAllAulas($idCurso);
         <div id="direit">
             <?php                   //Mostrando todas as aulas já criadas
                             for($i=0;$i<count($aulas);$i++){
-                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../sistema/Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
                             }
                 ?>
         </div>

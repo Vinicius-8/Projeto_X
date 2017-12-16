@@ -44,7 +44,7 @@ $lista = new Lista($_SESSION['idNum'],true);//objeto lista
 $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
         
         echo "<script>var array = [";
-        for($i = 0; $i<count($cursos);$i++){                //transposição de vetor de nomes de cursos do php para o js
+        for($i = 0; $i<count($cursos);$i++){             //transposição de vetor de nomes de cursos do php para o js, afim de evitar cursos com msm nome
             echo "'{$cursos[$i]['nome_curso']}',";
         }
         echo "'nada']</script>";

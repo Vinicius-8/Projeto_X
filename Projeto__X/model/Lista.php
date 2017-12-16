@@ -50,11 +50,25 @@ class Lista {
      * O metodo getAllCursos procura no BD por todos os cursos de um professor
      * @return array vetor com o nome do curso e id
      */
-    public function getAllCursos() {
+    private function getAllCursosProf() {
         $this->read->setDaft("id,nome_curso,thumb");
         $this->read->ExecutarRead("curso ", "where id_professor = '{$this->idUsuario}'");
         return $this->read->getResultado();
     }
+    private function getAllCursosAluno() {
+        
+        $this->read->setDaft("id,nome_curso,thumb");
+        $this->read->ExecutarRead("inscrito_em", "inner join curso on inscrito_em.id_curso = curso.id where id_aluno = '{$this->idUsuario}'");
+        return $this->read->getResultado();
+    }
+    public function getAllCursos() {
+        if ($this->tipo) {///professor
+           return $this->getAllCursosProf(); 
+        }else{
+            return $this->getAllCursosAluno(); 
+        }
+    }
+    
     
     /**
      * O metodo insertAula, insere uma aula fornecida pelo usuário no BD

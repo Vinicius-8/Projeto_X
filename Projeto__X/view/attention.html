@@ -97,7 +97,24 @@
                            symbol.style.backgroundImage = "url('imagens/att.png')";
                            titlem.innerHTML = "Aluno Não Logado";                           
                            descm.innerHTML = "Efetue o login para comprar o curso"; 
+<<<<<<< HEAD
                            setTimeout("history.back()", 5000);           
+=======
+                           setInterval('', 5000);
+                           window.history.back();
+                           break;
+                        case 12:
+                           symbol.style.backgroundImage = "url('imagens/att.png')";
+                           titlem.innerHTML = "Você já possui esse curso!";                           
+                           descm.innerHTML = "Verifique os seus cursos!"; 
+                           window.setTimeout("location.href='../sistema/aluno/logadoAluno.php'", 3000);
+                           break;
+                        case 13:
+                           symbol.style.backgroundImage = "url('imagens/ok.png')";
+                           titlem.innerHTML = "Curso Adquirido com sucesso!";                           
+                           descm.innerHTML = "Verifique os seus cursos!"; 
+                           window.setTimeout("location.href='../sistema/aluno/logadoAluno.php'", 3000);
+>>>>>>> 91014c759ab0bc703818e199ef26ad36d4b8b045
                            break;
                     }
                 }
