@@ -110,12 +110,13 @@
                            titlem.innerHTML = "Curso Adquirido com sucesso!";                           
                            descm.innerHTML = "Verifique os seus cursos!"; 
                            window.setTimeout("location.href='../sistema/aluno/logadoAluno.php'", 3000);
+
                            break;
                         case 14:
                            symbol.style.backgroundImage = "url('imagens/att.png')";
                            titlem.innerHTML = "Ops!";                           
                            descm.innerHTML = "Você não tem autorização pra ver essa aula!"; 
-                           etTimeout("history.back()", 3000);   
+                           window.setTimeout("history.back()", 3000);   
                            break;
                     }
                 }

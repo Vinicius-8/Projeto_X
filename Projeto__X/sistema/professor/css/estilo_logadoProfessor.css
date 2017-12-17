@@ -247,19 +247,55 @@ header {
     display: inline-block;
     position: relative;
     float: right;
-    padding: 50px;
-    margin-top: 10px;
+    padding: 40px;
+    margin-top: 20px;
+    margin-right: 1%;
     font-family: 'Josefin Sans', sans-serif;
 }
 
 
-.links a{
+.links .topheader{
     margin: 15px;
 }
 
-.links a:hover{
+.links .topheader:hover{
     border-bottom:3px white solid;
     padding-bottom:12px;
+}
+
+.dropdown {
+    display: inline-block;  
+}
+.bt-drop {
+    cursor: pointer;
+    margin-left: 50%;
+} 
+
+.c-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    min-width: 100px;
+    background-color: whitesmoke;
+    right: 2%;
+}
+
+.c-dropdown .d {
+    color: black;
+    padding: 20px 10px 20px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+   
+}
+
+.d:hover {
+    background-color: #cccccc;
+}
+
+.dropdown:hover .c-dropdown {
+    display: block;
 }
 
 /*começo - logo do site*/
