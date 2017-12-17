@@ -10,6 +10,47 @@ body {
     background-repeat: no-repeat;    
 }
 
+.dropdown {
+    display: inline-block;  
+    float: right;
+    z-index: 1;
+    margin-right: 5%;
+    margin-top: -5%;
+    
+}
+.bt-drop {
+    cursor: pointer;
+    margin-left: 50%;
+} 
+
+.c-dropdown {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    min-width: 100px;
+    background-color: whitesmoke;
+    right: 2%;
+}
+
+.c-dropdown .d {
+    color: black;
+    padding: 20px 10px 20px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+   
+}
+
+.d:hover {
+    background-color: #cccccc;
+}
+
+.dropdown:hover .c-dropdown {
+    display: block;
+}
+
+
 
 input {
     width: 100px;
