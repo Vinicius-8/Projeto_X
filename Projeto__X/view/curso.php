@@ -19,8 +19,9 @@ $aulas = $lista->getAllAulas($idCurso);
 for($i = 0;$i<count($aulas);$i++){
     $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
 }
+$forms = $lista->getAllForms($idCurso); //pegando todos os formulários
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
     <head>
         <meta charset="UTF-8">
@@ -30,6 +31,14 @@ for($i = 0;$i<count($aulas);$i++){
             function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
                 document.write("<form method='POST' action='../sistema/aluno/comprarCurso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
                 document.getElementById('mular').submit();  //submit do formulario
+            }
+            function showForms(){
+                document.getElementById("direit").style.display = "none";
+                document.getElementById("direit2").style.display = "block";
+            }
+            function showAulas(){
+                document.getElementById("direit2").style.display = "none";
+                document.getElementById("direit").style.display = "block";
             }
         </script>
     </head>
@@ -57,8 +66,8 @@ for($i = 0;$i<count($aulas);$i++){
             <div class="dropdown">
                 <img class="bt-drop" style="max-width: 18px" src="imagens/t.png">
                 <div class="c-dropdown">
-                    <a href="#" class="d">MINHA CONTA</a>
-                    <a href="#" class="d">SAIR</a>
+                    <a href="../sistema/minhaConta.php" class="d">MINHA CONTA</a>
+                    <a href="../sistema/sair.php" class="d">SAIR</a>
                 </div>
             </div>
         </div>
@@ -73,7 +82,7 @@ for($i = 0;$i<count($aulas);$i++){
             ?>
             <h1><?=$lista->getNome()?></h1><br>
             <h2>Preço: R$ <?=$lista->getPreco()?>,00</h2><br>
-            <span class="pan">AULAS: <?=$lista->getAulas()?></span> <span class="pan">FORMULÁRIOS: 0</span> <span class="pan">ALUNOS: 0</span><br>
+            <span class="pan" onclick="showAulas()"style="cursor: pointer;">AULAS: <?=$lista->getAulas()?></span> <span class="pan" onclick="showForms()" style="cursor: pointer;">FORMULÁRIOS: <?= $lista->getForm()?></span> <span class="pan">ALUNOS: <?=$lista->getAlunos()?></span><br>
             <br><span class="pan">DESCRIÇÃO:</span><br><span id="desc"><?=$lista->getDesc()?></span><br><span class="pan">Autor: <?=$lista->getNomeAutor()?> <?=$lista->getSobrenome()?> - <?= $lista->getNasc()?></span><br>
             <br><button onclick="select(<?=$idCurso?>)">COMPRAR CURSO</button>
         </div>
@@ -81,6 +90,13 @@ for($i = 0;$i<count($aulas);$i++){
             <?php                   //Mostrando todas as aulas já criadas
                             for($i=0;$i<count($aulas);$i++){
                                 echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../sistema/Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                            }
+                ?>
+        </div>
+        <div id="direit2" style="display: none;">
+            <?php                   //Mostrando todas as aulas já criadas
+                            for($i=0;$i<count($forms);$i++){
+                                echo "<div class='um' value='".$forms[$i]['id']."'> <span class='title'><a href='".$forms[$i]['url']."'>".$forms[$i]['nome_form']."</a><span></div>";
                             }
                 ?>
         </div>

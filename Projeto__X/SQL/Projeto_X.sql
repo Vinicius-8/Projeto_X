@@ -46,3 +46,19 @@ id_aluno int not null,
 id_curso int not null,
 foreign key(id_aluno) references aluno(idNum),
 foreign key(id_curso) references curso(id));
+
+create table formulario(
+id int not null unique auto_increment,
+nome_form varchar(100) not null,
+url varchar(255) not null,
+id_curso int not null,
+primary key(id),
+foreign key(id_curso) references curso(id)
+);
+
+
+
+select * from curso inner join professor on curso.id_professor = professor.idNum where professor.idNum = 1;
+
+select curso.id,nome_curso,preco,descricao,thumb,nome,sobrenome,data_nasc from curso inner join professor on curso.id_professor = professor.idNum where professor.idNum = 1;
+

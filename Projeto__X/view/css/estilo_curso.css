@@ -227,3 +227,32 @@ header {
 /*fim - logo do site*/
 
 /* ------------- Fim do topo ------------- */
+
+/*Formularios*/
+#direit2 {
+    display: block;
+    float: left;
+    width: 60%;
+    min-height: 80%;
+    height: auto;
+}
+
+#direit2 .um{
+    display: inline-block;
+    position: relative;
+    float: left;
+    clear:left;
+    width: 100%;
+    height: 10%;
+    padding-top: 4%;
+    text-align: center;
+}
+
+
+#direit2 .um .title a{
+    text-decoration: none;
+    color: white;
+}
+#direit2 .um:hover{
+    background-color: rgba(250, 250, 250, 0.2); 
+}

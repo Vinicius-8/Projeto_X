@@ -39,6 +39,8 @@ class Lista {
         $this->read->ExecutarRead('curso', "where id = '{$idCurso}' and id_professor = '{$this->idUsuario}' ");
         $res = $this->read->getResultado();
         $this->aulas = count($this->getAllAulas($idCurso));
+        $this->form = count($this->getAllForms($idCurso));
+        $this->alunos = count($this->getAllAlunos($idCurso));
         $this->desc =$res[0]['descricao'];
         $this->nome =$res[0]['nome_curso'];
         $this->preco =$res[0]['preco'];
@@ -48,7 +50,7 @@ class Lista {
     }
     
     /**
-     * O metodo getAllCursos procura no BD por todos os cursos de um professor
+     * O metodo getAllCursosProf procura no BD por todos os cursos de um professor
      * @return array vetor com o nome do curso e id
      */
     private function getAllCursosProf() {
@@ -56,15 +58,25 @@ class Lista {
         $this->read->ExecutarRead("curso ", "where id_professor = '{$this->idUsuario}'");
         return $this->read->getResultado();
     }
+    /**
+     * O método getAllCursosAluno procura no BD por todos os cursos de um aluno
+     * @return array vetor com o nome do curso, id e thumb
+     */
     private function getAllCursosAluno() {
         $this->read->setDaft("id,nome_curso,thumb");
         $this->read->ExecutarRead("inscrito_em", "inner join curso on inscrito_em.id_curso = curso.id where id_aluno = '{$this->idUsuario}'");
         return $this->read->getResultado();
     }
+    
+    
+    /**
+     * O metodo que escolhe entre professor e aluno
+     * @return array vetor com dados do BD
+     */
     public function getAllCursos() {
         if ($this->tipo) {///professor
            return $this->getAllCursosProf(); 
-        }else{
+        }else{//aluno
             return $this->getAllCursosAluno(); 
         }
     }
@@ -81,6 +93,12 @@ class Lista {
         $create = new Create();
         $create->ExecutarCreate('aula',$datos);
     }
+    
+    public function insertForm($nome_form,$url,$id_curso) {
+        $deta = array('nome_form'=>$nome_form,'url'=>$url,'id_curso'=>$id_curso);
+        $create = new Create();
+        $create->ExecutarCreate('formulario',$deta);
+    }
     /**
      * 
      * @param string $idCurso id do Curso no BD
@@ -89,6 +107,26 @@ class Lista {
     public function getAllAulas($idCurso){
         $this->read->setDaft("id,nome_aula,url");
         $this->read->ExecutarRead('aula', "where id_curso = '{$idCurso}'");
+        return $this->read->getResultado();
+    }
+    /**
+     * O metodo getAllForms captura todos os formularios de um determinado curso
+     * @param array $idCurso
+     * @return array id,nome_form,url
+     */
+    public function getAllForms($idCurso) {
+        $this->read->setDaft("id,nome_form,url");
+        $this->read->ExecutarRead('formulario', "where id_curso = '{$idCurso}'");
+        return $this->read->getResultado();
+    }
+    /**
+     * O metodo getAllAlunos captura todos os alunos de um tipo de curso
+     * @param string $idCurso
+     * @return array id_aluno
+     */
+    private function getAllAlunos($idCurso) {
+        $this->read->setDaft("id_aluno");
+        $this->read->ExecutarRead("inscrito_em", "where id_curso = '{$idCurso}'");
         return $this->read->getResultado();
     }
             

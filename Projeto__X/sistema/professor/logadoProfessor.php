@@ -93,8 +93,8 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                 <div class="dropdown">
                     <img class="bt-drop" style="max-width: 18px" src="../../view/imagens/t.png">
                     <div class="c-dropdown">
-                        <a href="#" class="d">MINHA CONTA</a>
-                        <a href="#" class="d">SAIR</a>
+                        <a href="../minhaConta.php" class="d">MINHA CONTA</a>
+                        <a href="../sair.php" class="d">SAIR</a>
                     </div>
                 </div>
             </div>        
@@ -108,13 +108,14 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                 <div>
                     <botton onClick="contentDiv()">Meus Cursos</botton>
                     <botton onClick="criarDiv()">Criar Curso</botton>
+                    <botton onClick="">Fórum</botton>
                 </div>
             </div>
             
             <div id="topo"> 
                 <div class="tit-h2"><h2 id="title">Meus cursos</h2></div>
                 
-                <div class="sair"><h3><a href="#">SAIR</a><h3></div>
+                <div class="sair"><h3><a href="../sair.php">SAIR</a><h3></div>
 
             </div>
             

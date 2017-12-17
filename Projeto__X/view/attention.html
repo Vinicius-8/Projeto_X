@@ -97,7 +97,7 @@
                            symbol.style.backgroundImage = "url('imagens/att.png')";
                            titlem.innerHTML = "Aluno Não Logado";                           
                            descm.innerHTML = "Efetue o login para comprar o curso"; 
-                           setTimeout("history.back()", 5000);           
+                           setTimeout("location.href='login.html'", 4000);           
                            break;
                         case 12:
                            symbol.style.backgroundImage = "url('imagens/att.png')";
@@ -115,8 +115,8 @@
                         case 14:
                            symbol.style.backgroundImage = "url('imagens/att.png')";
                            titlem.innerHTML = "Ops!";                           
-                           descm.innerHTML = "Você não tem autorização pra ver essa aula!"; 
-                           window.setTimeout("history.back()", 3000);   
+                           descm.innerHTML = "Você não comprou essa aula!"; 
+                           window.setTimeout("location.href='curso.php'", 3000);   
                            break;
                     }
                 }

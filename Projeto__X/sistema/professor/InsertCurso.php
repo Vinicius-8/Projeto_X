@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-if (!$_SESSION['logado'] and $_SESSION['aluno']) {
-    echo "<script>alert('Professor nao logado')</script>";
+if (!$_SESSION['logado'] and $_SESSION['aluno']) {//verificar se está logado e se é professor
     header("location:../../view/login.html");
     die();
 }
 
-if (isset($_POST['cursoid'])) {
+if (isset($_POST['cursoid'])) {     //verificar se o curso já foi enviado por post
     $_SESSION['id_curso'] = $_POST['cursoid']; 
     header('location:Playlist.php');
     die();
@@ -28,7 +27,7 @@ $create = new Create();
 $dados = array('nome_curso'=>$nome,'preco'=>$preco,'descricao'=>$desc,'id_professor'=>$_SESSION['idNum']);
 $create->ExecutarCreate('curso',$dados);
 
-
+    
 //lendo os cursos do professor
 $read = new Read();
 $read->setDaft('id');

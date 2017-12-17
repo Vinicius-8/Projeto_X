@@ -22,17 +22,27 @@ class Listagem {
     public function __construct() {
         $this->read = new Read();
     }
+    /**
+     * O metodo listagemParcial pega algumas informações do banco de dados
+     * @return array nome, id, thumb
+     */
     public function listagemParcial() {
         $this->read->setDaft("id,nome_curso,thumb");
         $this->read->ExecutarRead("curso");
         return $this->read->getResultado();
     }
     
+    /**
+     * O metodo listagemCompleta pega todas as informações relacionadas ao curso informado
+     * @param string $idCurso id do curso a ser extraido
+     */
     public function listagemCompleta($idCurso) {
         $this->read->setDaft("curso.id,nome_curso,preco,descricao,thumb,nome,sobrenome,data_nasc");
         $this->read->ExecutarRead("curso","inner join professor on curso.id_professor = professor.idNum where curso.id = '{$idCurso}'");
         $res = $this->read->getResultado();
         $this->aulas = count($this->getAllAulas($idCurso));
+        $this->form = count($this->getAllForms($idCurso));
+        $this->alunos = count($this->getAllAlunos($idCurso));
         $this->desc =$res[0]['descricao'];
         $this->nome =$res[0]['nome_curso'];
         $this->preco =$res[0]['preco'];
@@ -43,7 +53,7 @@ class Listagem {
     }
     
     /**
-     * 
+     * O metodo getAllAulas captura todas as aulas do banco de dados
      * @param string $idCurso id do Curso no BD
      * @return array array com todas as aulas
      */
@@ -52,6 +62,28 @@ class Listagem {
         $this->read->ExecutarRead('aula', "where id_curso = '{$idCurso}'");
         return $this->read->getResultado();
     }
+    
+    /**
+     * O metodo getAllForms captura todos os formulários do banco de dados
+     * @param string $idCurso id do curso a procurar os formularios
+     * @return array vetor com id,nome_form,url;
+     */
+    public function getAllForms($idCurso) {
+        $this->read->setDaft('id,nome_form,url');
+        $this->read->ExecutarRead('formulario',"where id_curso = '{$idCurso}'");
+        return $this->read->getResultado();
+    }
+    /**
+     * O metodo getAllAlunos captura todos os alunos inscritos no curso informado
+     * @param string $idCurso id do curso a procurar os alunos
+     * @return array vetor do tipo id_aluno
+     */
+    public function getAllAlunos($idCurso) {
+        $this->read->setDaft('id_aluno');
+        $this->read->ExecutarRead('inscrito_em',"where id_curso = '{$idCurso}'");
+        return $this->read->getResultado();
+    }
+    
     function getNome() {
         return $this->nome;
     }

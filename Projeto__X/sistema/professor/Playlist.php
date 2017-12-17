@@ -14,11 +14,10 @@ require '../../model/Lista.php';
 $list = new Lista($_SESSION['idNum'],true);          //objeto lista, com o id do professor
 $list->getData( $_SESSION['id_curso']);         //pegando dados correspondentes ao id do ursos
 $aulas = $list->getAllAulas($_SESSION['id_curso']);     //pegando todas as aulas corespondentes ao curso 
-
 for($i = 0;$i<count($aulas);$i++){
     $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
 }
-
+$forms = $list->getAllForms($_SESSION['id_curso']);
 
 ?>
 <!DOCTYPE HTML>
@@ -46,8 +45,18 @@ for($i = 0;$i<count($aulas);$i++){
                 url = document.getElementById("url").value;     //url da aula
                 
                 if (niu!=="" && url!=="") {                     //verificação de preenchimento dos campos
-                    document.getElementById("aula").submit();   //submit do formulario
+                    document.getElementById("elemento").submit();   //submit do formulario
                 } 
+            }
+            
+            function showAulas(){
+                document.getElementById("formularios").style.display = "none";
+                document.getElementById("aulas").style.display = "block ";
+                
+            }
+            function showForms(){
+                document.getElementById("aulas").style.display = "none";
+                document.getElementById("formularios").style.display = "block";
             }
         </script>
     </head>
@@ -75,8 +84,8 @@ for($i = 0;$i<count($aulas);$i++){
                 <div class="dropdown">
                     <img class="bt-drop" style="max-width: 18px" src="../../view/imagens/t.png">
                     <div class="c-dropdown">
-                        <a href="#" class="d">MINHA CONTA</a>
-                        <a href="#" class="d">SAIR</a>
+                        <a href="../minhaConta.php" class="d">MINHA CONTA</a>
+                        <a href="../sair.php" class="d">SAIR</a>
                     </div>
                 </div>
             </div>        
@@ -90,8 +99,8 @@ for($i = 0;$i<count($aulas);$i++){
             echo "<div id='thumb' style='background-image: url(".$list->getThumb().")'>  
             </div>";
             ?>
-            <h2>AULAS: <?= $list->getAulas()?></h2>                 <!--Pegando o numero de aulas-->
-            <h2>FORMULÁRIOS: <?= $list->getForm()?></h2>           <!--Pegando o numero de Formularios--> 
+            <h2 onclick="showAulas()"  style="cursor: pointer">AULAS: <?= $list->getAulas()?></h2>                 <!--Pegando o numero de aulas-->
+            <h2 onclick="showForms()" style="cursor: pointer">FORMULÁRIOS: <?= $list->getForm()?></h2>           <!--Pegando o numero de Formularios--> 
             <h2>ALUNOS: <?= $list->getAlunos()?></h2>               <!--Pegando o numero de alunos-->
             <h2>DESCRIÇÃO:</h2>
             <textarea name="desc" id="txar" placeholder="sobre o que é esse curso?" form="fora" required></textarea>
@@ -122,7 +131,7 @@ for($i = 0;$i<count($aulas);$i++){
                 <div id="new">
                     
                     <!--inserir aula-->
-                    <form method="POST" action="InsertAula.php" id="aula">
+                    <form method="POST" action="InsertAula.php" id="elemento">
                         <span id="tit">Aula Nova: </span> <input type="text" name="new" placeholder="Nome" required> 
                         <input type="text" name="url" placeholder="Link do vídeo" required>
                     <button onclick="adicionar()">Adicionar</button>
@@ -136,6 +145,23 @@ for($i = 0;$i<count($aulas);$i++){
                             }
                 ?>
                 
+            </div>
+            
+            <div id="formularios" style="display:none;">
+                <h2>Formulários: </h2>
+                
+                <!--inserir Formulário-->
+                    <form method="POST" action="InsertForm.php" id="elemento">
+                        <span id="tito">Novo Formulário: </span> <input type="text" name="new" placeholder="Nome do formulário" required> 
+                        <input type="text" name="url" placeholder="Link do formulário" required>
+                    <button onclick="adicionar()">Adicionar</button>
+                    </form>
+                
+                <?php                   //Mostrando todas formularios já criadas
+                            for($i=0;$i<count($forms);$i++){
+                                echo "<div class='um' value='".$forms[$i]['id']."'> <span class='title'><a href='".$forms[$i]['url']."'>".$forms[$i]['nome_form']."</a><span></div>";
+                            }
+                ?>
             </div>
         </div>
     </div>

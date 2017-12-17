@@ -65,8 +65,8 @@ $nome = $_GET['a'];//capurando video
                 <div class="dropdown">
                     <img class="bt-drop" style="max-width: 18px" src="../SQL/../view/imagens/t.png">
                     <div class="c-dropdown">
-                        <a href="#" class="d">MINHA CONTA</a>
-                        <a href="#" class="d">SAIR</a>
+                        <a href="minhaConta.php" class="d">MINHA CONTA</a>
+                        <a href="sair.php" class="d">SAIR</a>
                     </div>
                 </div>
             </div>        
