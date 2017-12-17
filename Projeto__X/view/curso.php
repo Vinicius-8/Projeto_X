@@ -48,6 +48,13 @@ $aulas = $lista->getAllAulas($idCurso);
             <a href="sobreNos.html" class="topheader">SOBRE NÓS</a>
             <a href="faleCon.html" class="topheader">FALE CONOSCO</a>
             <a href="pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+            <div class="dropdown">
+                <img class="bt-drop" style="max-width: 18px" src="imagens/t.png">
+                <div class="c-dropdown">
+                    <a href="#" class="d">MINHA CONTA</a>
+                    <a href="#" class="d">SAIR</a>
+                </div>
+            </div>
         </div>
         
     </header>

@@ -1,13 +1,6 @@
 <?php
 session_start();
-<<<<<<< HEAD
 
-if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
-    echo "<script>alert('Aluno nao logado')</script>";
-    header("location:../view/login.php");
-}
-=======
->>>>>>> 91014c759ab0bc703818e199ef26ad36d4b8b045
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
     header("location:../../index.html");
     die();
