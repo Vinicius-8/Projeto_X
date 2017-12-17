@@ -44,6 +44,7 @@ class Lista {
         $this->preco =$res[0]['preco'];
         $this->thumb =$res[0]['thumb'];
         return $res;
+        
     }
     
     /**
@@ -56,7 +57,6 @@ class Lista {
         return $this->read->getResultado();
     }
     private function getAllCursosAluno() {
-        
         $this->read->setDaft("id,nome_curso,thumb");
         $this->read->ExecutarRead("inscrito_em", "inner join curso on inscrito_em.id_curso = curso.id where id_aluno = '{$this->idUsuario}'");
         return $this->read->getResultado();

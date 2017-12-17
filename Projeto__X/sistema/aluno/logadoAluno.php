@@ -1,19 +1,11 @@
 <?php
 session_start();
-<<<<<<< HEAD
-
-if (!$_SESSION['logado'] and !$_SESSION['aluno']) {
-    echo "<script>alert('Aluno nao logado')</script>";
-    header("location:../view/login.php");
-}
-=======
->>>>>>> 91014c759ab0bc703818e199ef26ad36d4b8b045
 if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
     header("location:../../index.html");
     die();
-}else if (!$_SESSION['logado'] and !$_SESSION['aluno']) { //verificação de logado e se é aluno
-    echo "<script>alert('Professor nao logado')</script>";
+}else if (!$_SESSION['logado'] or !$_SESSION['aluno']) { //verificação de logado e se é aluno
     header("location:../../view/login.html");
+    die();
 }
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
@@ -46,13 +38,18 @@ try {
 
 $lis = new Lista( $_SESSION['idNum'],false);
 $cursos = $lis->getAllCursos();
-var_dump($cursos);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br"> 
  <head> 
   <TITLE>Título da página</TITLE> 
   <link href="css/estilo_logadoAluno.css" rel="stylesheet" type="text/css"/>
+  <script>
+      function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
+                document.write("<form method='POST' action='../../view/Curso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
+                document.getElementById('mular').submit();  //submit do formulario
+            }
+  </script>
  </HEAD> 
 
  <BODY> 

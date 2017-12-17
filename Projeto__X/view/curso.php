@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!isset($_POST['cursoid']) or empty($_POST['cursoid'])){
     header("location:catalogo.php");
 }
@@ -10,9 +11,14 @@ require '../model/Listagem.php';
 
 $idCurso = $_POST['cursoid']; //capturando o id do curso
 
+$_SESSION['id_curso'] = $idCurso;//definindo na sessão
+
 $lista = new Listagem(); //objeto listagem
 $lista->listagemCompleta($idCurso); //listagem completa do curso
 $aulas = $lista->getAllAulas($idCurso);
+for($i = 0;$i<count($aulas);$i++){
+    $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,8 +67,8 @@ $aulas = $lista->getAllAulas($idCurso);
             <h1><?=$lista->getNome()?></h1><br>
             <h2>Preço: R$ <?=$lista->getPreco()?>,00</h2><br>
             <span class="pan">AULAS: <?=$lista->getAulas()?></span> <span class="pan">FORMULÁRIOS: 0</span> <span class="pan">ALUNOS: 0</span><br>
-            <br><span class="pan">DESCRIÇÃO:</span><br><span id="desc"><?=$lista->getDesc()?></span>
-            <button onclick="select(<?=$idCurso?>)">COMPRAR CURSO</button>
+            <br><span class="pan">DESCRIÇÃO:</span><br><span id="desc"><?=$lista->getDesc()?></span><br><span class="pan">Autor: <?=$lista->getNomeAutor()?> <?=$lista->getSobrenome()?> - <?= $lista->getNasc()?></span><br>
+            <br><button onclick="select(<?=$idCurso?>)">COMPRAR CURSO</button>
         </div>
         <div id="direit">
             <?php                   //Mostrando todas as aulas já criadas

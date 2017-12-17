@@ -16,7 +16,42 @@ class Listagem {
      * @var string 
      */
     private $nome,$thumb;
-    private $preco,$aulas,$desc;
+    private $preco,$aulas,$desc,$nomeAutor,$sobrenome,$nasc;
+    private $form,$alunos; //-----------posteriormente
+    
+    public function __construct() {
+        $this->read = new Read();
+    }
+    public function listagemParcial() {
+        $this->read->setDaft("id,nome_curso,thumb");
+        $this->read->ExecutarRead("curso");
+        return $this->read->getResultado();
+    }
+    
+    public function listagemCompleta($idCurso) {
+        $this->read->setDaft("curso.id,nome_curso,preco,descricao,thumb,nome,sobrenome,data_nasc");
+        $this->read->ExecutarRead("curso","inner join professor on curso.id_professor = professor.idNum where curso.id = '{$idCurso}'");
+        $res = $this->read->getResultado();
+        $this->aulas = count($this->getAllAulas($idCurso));
+        $this->desc =$res[0]['descricao'];
+        $this->nome =$res[0]['nome_curso'];
+        $this->preco =$res[0]['preco'];
+        $this->thumb =$res[0]['thumb'];
+        $this->nomeAutor = $res[0]['nome'];
+        $this->nasc = $res[0]['data_nasc'];
+        $this->sobrenome = $res[0]['sobrenome'];
+    }
+    
+    /**
+     * 
+     * @param string $idCurso id do Curso no BD
+     * @return array array com todas as aulas
+     */
+    public function getAllAulas($idCurso){
+        $this->read->setDaft("id,nome_aula,url");
+        $this->read->ExecutarRead('aula', "where id_curso = '{$idCurso}'");
+        return $this->read->getResultado();
+    }
     function getNome() {
         return $this->nome;
     }
@@ -44,37 +79,17 @@ class Listagem {
     function getAlunos() {
         return $this->alunos;
     }
+    function getNomeAutor() {
+        return $this->nomeAutor;
+    }
 
-        private $form,$alunos; //-----------posteriormente
-    
-    public function __construct() {
-        $this->read = new Read();
+    function getSobrenome() {
+        return $this->sobrenome;
     }
-    public function listagemParcial() {
-        $this->read->setDaft("id,nome_curso,thumb");
-        $this->read->ExecutarRead("curso");
-        return $this->read->getResultado();
+
+    function getNasc() {
+        return $this->nasc;
     }
-    
-    public function listagemCompleta($idCurso) {
-        $this->read->setDaft("*");
-        $this->read->ExecutarRead("curso","where id = {$idCurso}");
-        $res = $this->read->getResultado();
-        $this->aulas = count($this->getAllAulas($idCurso));
-        $this->desc =$res[0]['descricao'];
-        $this->nome =$res[0]['nome_curso'];
-        $this->preco =$res[0]['preco'];
-        $this->thumb =$res[0]['thumb'];
-    }
-    
-    /**
-     * 
-     * @param string $idCurso id do Curso no BD
-     * @return array array com todas as aulas
-     */
-    public function getAllAulas($idCurso){
-        $this->read->setDaft("id,nome_aula,url");
-        $this->read->ExecutarRead('aula', "where id_curso = '{$idCurso}'");
-        return $this->read->getResultado();
-    }
+
+
 }
