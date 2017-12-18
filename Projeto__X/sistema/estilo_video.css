@@ -148,3 +148,42 @@ header {
 /*fim - logo do site*/
 
 /* ------------- Fim do topo ------------- */
+
+/*Comentarios**/
+
+#comentarios{
+    background-color: blue;
+    width: 500px;
+    min-height: 500px;
+    height: auto;
+    margin: 0 auto;
+}
+
+#comentarios input[type=text]{
+    margin-left: 50px; 
+}
+
+#comentarios .coment {
+    background-color: green;
+    width: 400px;
+    min-height: 80px;
+    float: left;
+    clear: left;
+    margin:20px;  
+}
+#comentarios .coment .com{
+    margin-left: 20px;
+}
+
+#comentarios .coment .resp{
+    display: none;
+}
+#omentarios .coment .com{
+    margin-left: 20px;
+    background-color: green;
+}
+#comentarios .coment .sub_rep{
+    float:right;
+    clear: right;
+    background-color: red;
+}

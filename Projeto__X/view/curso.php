@@ -20,6 +20,7 @@ for($i = 0;$i<count($aulas);$i++){
     $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
 }
 $forms = $lista->getAllForms($idCurso); //pegando todos os formulários
+
 ?>
 <!DOCTYPE html> 
 <html>
@@ -89,14 +90,14 @@ $forms = $lista->getAllForms($idCurso); //pegando todos os formulários
         <div id="direit">
             <?php                   //Mostrando todas as aulas já criadas
                             for($i=0;$i<count($aulas);$i++){
-                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../sistema/Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../sistema/Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."&i=".$aulas[$i]['id']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
                             }
                 ?>
         </div>
         <div id="direit2" style="display: none;">
-            <?php                   //Mostrando todas as aulas já criadas
+            <?php                   //Mostrando todas os formularios já criados
                             for($i=0;$i<count($forms);$i++){
-                                echo "<div class='um' value='".$forms[$i]['id']."'> <span class='title'><a href='".$forms[$i]['url']."'>".$forms[$i]['nome_form']."</a><span></div>";
+                                echo "<div class='um' value='".$forms[$i]['id']."'> <span class='title'><a href='../sistema/formulario.php?f=".$forms[$i]['url']."'>".$forms[$i]['nome_form']."</a><span></div>";
                             }
                 ?>
         </div>

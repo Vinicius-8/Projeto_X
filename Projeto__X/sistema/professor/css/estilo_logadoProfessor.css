@@ -347,3 +347,27 @@ header {
 /*fim - logo do site*/
 
 /* ------------- Fim do topo ------------- */
+/*Forum*/
+#forum {
+    position: relative;
+}
+#forum .coment {
+    position: relative;
+    left: 20px;
+    top: 20px;
+    margin: 20px;
+    background-color: whitesmoke;
+    width: 700px;
+    min-height: 100px;   
+    float: left;
+}
+
+#forum .coment .com{
+    margin-left: 20px;
+    background-color: green;
+}
+#forum .coment .sub_rep{
+    float:right;
+    clear: right;
+    background-color: red;
+}

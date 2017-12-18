@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 if((!isset($_SESSION['idNum'])) or (!isset($_SESSION['id_curso']))){ ///verificação do id do professor e do id do curso
     header("location:../../view/attention.html?9"); // occorreu um problema
     die();
@@ -18,7 +17,6 @@ for($i = 0;$i<count($aulas);$i++){
     $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
 }
 $forms = $list->getAllForms($_SESSION['id_curso']);
-
 ?>
 <!DOCTYPE HTML>
 <html lang=”pt-br”>
@@ -141,7 +139,7 @@ $forms = $list->getAllForms($_SESSION['id_curso']);
                 
                 <?php                   //Mostrando todas as aulas já criadas
                             for($i=0;$i<count($aulas);$i++){
-                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
+                                echo "<div class='um' value='".$aulas[$i]['id']."'> <span class='title'><a href='../Video.php?v=".$aulas[$i]['url']."&a=".$aulas[$i]['nome_aula']."&i=".$aulas[$i]['id']."'>".$aulas[$i]['nome_aula']."</a><span></div>";
                             }
                 ?>
                 

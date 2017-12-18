@@ -50,8 +50,11 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
 //------------------------------------------
 
 
+//capturando os comentários
+$read->setDaft('c.id,texto,nome,sobrenome,nome_aula');
+$read->ExecutarRead('comentario',"c join aluno a on c.id_aluno = a.idNum join aula l on l.id = c.id_aula where id_professor = '{$_SESSION['idNum']}'order by id desc");
+$coments = $read->getResultado();
 
-        
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -61,11 +64,20 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/estilo_logadoProfessor.css"/>
         <script src="scripts/script_logadoProfessor.js"></script>
-        
+        <style>
+            #forum .coment .resp  {
+                display: none;
+            }               
+        </style>
         <script>
             function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
                 document.write("<form method='POST' action='InsertCurso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
                 document.getElementById('mular').submit();  //submit do formulario
+            }
+            function turn(num){
+                document.getElementById('resp'+num).style.display ='block';
+                document.getElementById('rep'+num).style.display ='none';
+                
             }
         </script>
         
@@ -90,6 +102,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                 <a href="../../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
                 <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
                 <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+
                 <div class="dropdown">
                     <img class="bt-drop" style="max-width: 18px" src="../../view/imagens/t.png">
                     <div class="c-dropdown">
@@ -108,18 +121,18 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                 <div>
                     <botton onClick="contentDiv()">Meus Cursos</botton>
                     <botton onClick="criarDiv()">Criar Curso</botton>
-                    <botton onClick="">Fórum</botton>
+                    <botton onClick="forumDiv()">Fórum</botton>
                 </div>
             </div>
             
             <div id="topo"> 
-                <div class="tit-h2"><h2 id="title">Meus cursos</h2></div>
+                <div class="tit-h2"><h2 id="title">Fórum</h2></div>
                 
                 <div class="sair"><h3><a href="../sair.php">SAIR</a><h3></div>
 
             </div>
             
-            <div id="content">
+            <div id="content" style="display:none">
                
               <?php     //listagem de todos os cursos de um determinado professor, que incluem thumb, nome e id
                 
@@ -127,12 +140,13 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                         echo "<div class='container' onclick='select(".$cursos[$i]['id'].")' >
                     <img src='".$cursos[$i]['thumb']."'  alt='Thumb do Curso'> "
                                 . "<div class='fade'><a>".$cursos[$i]['nome_curso']."</a></div></div>";
+                        
                     }
                     
                 ?>
             </div>
             
-            <div id="criar">
+            <div id="criar" style="display:none">
                 <form action="InsertCurso.php" method="GET" id="form">
                     Nome do curso:<br>
                     <input type="text" name="nome" placeholder="Nome do Curso" id="nomeCurso"required><br>
@@ -161,6 +175,40 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
                     <input type="submit" value="Criar Curso" >
                 </form>
             </div>
+            <div id="forum" style="display:block">
+                <!--listagem dos comentarios-->
+                
+                <?php
+                for($i = 0; $i<count($coments);$i++){
+                    echo "<div class='coment'>"
+                    . "<span class='autor'>Aula: ".$coments[$i]['nome_aula'].""
+                            . "<br>"
+                            . "<br>"
+                            .$coments[$i]['nome']." ". $coments[$i]['sobrenome'].": </span>"
+                            . "<br>"
+                            . "<span class='com'>".$coments[$i]['texto']."</span>"
+                            . "<br>"
+                            . "<form method='post' action='../insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
+                            . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
+                            . "<input type='hidden' name='autor' value='Professor'>"
+                            . "<input type='text' name='resposta' placeholder='Resposta' required>"
+                            . "<input type='submit'>"
+                            . "</form>"
+                            . "<button id='rep".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+                    
+                    $read->setDaft("texto_sub,autor");
+                    $read->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."' ");
+                    $sub = $read->getResultado();
+                    for($j = 0;$j< count($sub);$j++){
+                        echo "<br><br><span class='sub_rep'> ~".$sub[$j]['autor']."~: ".$sub[$j]['texto_sub']."</span>";
+                    }
+                    echo "</div>";
+                }
+                
+                ?>
+
+            </div>
+            
         </div>        
     </body>
 </html>

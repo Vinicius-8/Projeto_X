@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['logado']) or !$_SESSION['logado']) { //verificação de logado e se é aluno
     header("location:../view/attention.html?11");
     die();
@@ -34,6 +35,19 @@ if (!$r->getResultado()) {
 $video =$_GET['v']; //capurando video
 $nome = $_GET['a'];//capurando video
 
+
+//campturando o id do professor
+$r->setDaft('id_professor');
+$r->ExecutarRead('curso',"where id = {$_SESSION['id_curso']}");
+$_idprofessor = $r->getResultado();
+
+//capturando os comentários
+$r->setDaft('c.id,texto,nome,sobrenome,nome_aula');
+$r->ExecutarRead('comentario',"c join aluno a on c.id_aluno = a.idNum join aula l on l.id = c.id_aula where id_professor = '{$_idprofessor[0]['id_professor']}' and id_aula = '{$_GET['i']}'order by id desc");
+
+
+
+$coments = $r->getResultado();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -41,6 +55,13 @@ $nome = $_GET['a'];//capurando video
         <meta charset="UTF-8">
         <title>Video</title>
         <link rel="stylesheet" href="estilo_video.css"> 
+        <script>
+            function turn(num){
+                document.getElementById('resp'+num).style.display ='block';
+                document.getElementById('rep'+num).style.display ='none';
+                
+            }
+        </script>
     </head>
     <body>
         <header>        
@@ -76,5 +97,57 @@ $nome = $_GET['a'];//capurando video
        src="https://www.youtube.com/embed/<?=$video;?>"
        frameborder="1"></iframe>
         <h1><?=$nome?></h1>
+        
+        <div id="comentarios">
+        
+        <?php 
+        if ($_SESSION['aluno']) {
+            
+        
+        ?>
+            <form method="POST" action="insertComent.php">
+                <input type="text" name="coment" required>
+                <input type="hidden" name="id_aula" value="<?=$_GET['i']?>">
+                <input type="hidden" name="prof" value="<?=$_idprofessor[0]['id_professor']?>">
+                <input type="submit">
+            </form>
+            <?php
+        }//
+           //     for($i = 0; $i<count($coments);$i++){
+             //       echo "<div class='coment'>"
+               //     . "<span class='autor'>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].":</span><br><span class='com'>".$coments[$i]['texto']."</span><br>"
+                 //           . "<form method='post' action='insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
+                   //         . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
+                     //       . "<input type='text' name='resposta' placeholdrequired><input type='hidden' name='autor' value='".$coments[$i]['nome']." ".$coments[$i]['sobrenome']."'><input type='submit'></form><button id='rep".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder<button/></div>";
+               // }
+            ?>
+            <!--listagem dos comentarios-->
+                
+                <?php
+                for($i = 0; $i<count($coments);$i++){
+                    echo "<div class='coment'>"
+                    . "<span class='autor'>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].": </span>"
+                            . "<br>"
+                            . "<span class='com'>".$coments[$i]['texto']."</span>"
+                            . "<br>"
+                            . "<form method='post' action='insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
+                            . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
+                            . "<input type='hidden' name='autor' value='".$_SESSION['id']."'>"
+                            . "<input type='text' name='resposta' placeholder='Resposta' required>"
+                            . "<input type='submit'>"
+                            . "</form>"
+                            . "<button id='rep".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+                    
+                    $r->setDaft("texto_sub,autor");
+                    $r->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."' order by id desc");
+                    $sub = $r->getResultado();
+                    for($j = 0;$j< count($sub);$j++){
+                        echo "<br><br><span class='sub_rep'> ~".$sub[$j]['autor']."~: ".$sub[$j]['texto_sub']."</span>";
+                    }
+                    echo "</div>";
+                }
+                
+                ?>
+        </div>
     </body>
 </html>
