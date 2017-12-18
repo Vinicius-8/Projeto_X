@@ -87,7 +87,7 @@ $coments = $read->getResultado();
             <a href="../../index.html"><div class="logo"> 
                 <svg> 
                     <symbol id="s-text"> 
-                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
                     <g> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
@@ -116,7 +116,7 @@ $coments = $read->getResultado();
         <div id="area">
             
             <div id="esquerda"> 
-                <img src="../../view/imagens/user-teacher.png">
+                <img src="../../view/imagens/user_teacher.png">
                 <h2><?= $nome?></h2>
                 <div>
                     <botton onClick="contentDiv()">Meus Cursos</botton>
@@ -127,8 +127,6 @@ $coments = $read->getResultado();
             
             <div id="topo"> 
                 <div class="tit-h2"><h2 id="title">Fórum</h2></div>
-                
-                <div class="sair"><h3><a href="../sair.php">SAIR</a><h3></div>
 
             </div>
             
@@ -175,7 +173,7 @@ $coments = $read->getResultado();
                     <input type="submit" value="Criar Curso" >
                 </form>
             </div>
-            <div id="forum" style="display:block">
+            <div id="forum">
                 <!--listagem dos comentarios-->
                 
                 <?php
@@ -184,7 +182,7 @@ $coments = $read->getResultado();
                     . "<span class='autor'>Aula: ".$coments[$i]['nome_aula'].""
                             . "<br>"
                             . "<br>"
-                            .$coments[$i]['nome']." ". $coments[$i]['sobrenome'].": </span>"
+                            ."<b>".$coments[$i]['nome']." ". $coments[$i]['sobrenome']."</b>: </span>"
                             . "<br>"
                             . "<span class='com'>".$coments[$i]['texto']."</span>"
                             . "<br>"
@@ -194,13 +192,13 @@ $coments = $read->getResultado();
                             . "<input type='text' name='resposta' placeholder='Resposta' required>"
                             . "<input type='submit'>"
                             . "</form>"
-                            . "<button id='rep".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+                            . "<button id='rep'".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
                     
                     $read->setDaft("texto_sub,autor");
                     $read->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."' ");
                     $sub = $read->getResultado();
                     for($j = 0;$j< count($sub);$j++){
-                        echo "<br><br><span class='sub_rep'> ~".$sub[$j]['autor']."~: ".$sub[$j]['texto_sub']."</span>";
+                        echo "<br><br><span class='sub_rep'> <b>~".$sub[$j]['autor']."~</b>: ".$sub[$j]['texto_sub']."</span>";
                     }
                     echo "</div>";
                 }

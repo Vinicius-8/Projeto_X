@@ -48,7 +48,7 @@ $coments = $read->getResultado();
 <!DOCTYPE html>
 <html lang="pt-br"> 
  <head> 
-  <TITLE>Título da página</TITLE> 
+  <TITLE>Área do Aluno</TITLE> 
   <link href="css/estilo_logadoAluno.css" rel="stylesheet" type="text/css"/>
   <style>
       #forum .coment .resp  {
@@ -72,59 +72,93 @@ $coments = $read->getResultado();
  </HEAD> 
 
  <BODY> 
-     <div id="esq">
-         <h2><?=$nome?></h2>
-         <div id="bot">
-             <botton onclick="cursosDiv()">Meus Cursos</botton> <br>
-             <botton ><a href="../../view/catalogo.php">Mais Cursos<a></botton> 
-                         <botton onclick="forumDiv()">Fórum<a></botton> 
-         </div>
-     </div>
-     <div id="topo">
-         <h2 id="title">Fórum</h2>
-     </div>
-     <div id="cursos">
-         <?php     //listagem de todos os cursos de um determinado professor, que incluem thumb, nome e id
-                
-                   for($i = 0; $i<count($cursos); $i++){
-                        echo "<div class='container' onclick='select(".$cursos[$i]['id'].")' >
-                    <img src='".$cursos[$i]['thumb']."'  alt='Thumb do Curso'> "
-                                . "<div class='fade'><a>".$cursos[$i]['nome_curso']."</a></div></div>";
-                    }
-                    
-                ?>
-     </div>
-     <div id="forum">
-         <!--listagem dos comentarios-->
-                
-                <?php
-                for($i = 0; $i<count($coments);$i++){
-                    echo "<div class='coment'>"
-                    . "<span class='autor'>Aula: ".$coments[$i]['nome_aula'].""
-                            . "<br>"
-                            . "<br>"
-                            .$coments[$i]['nome']." ". $coments[$i]['sobrenome'].": </span>"
-                            . "<br>"
-                            . "<span class='com'>".$coments[$i]['texto']."</span>"
-                            . "<br>"
-                            . "<form method='post' action='../insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
-                            . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
-                            . "<input type='hidden' name='autor' value='".$_SESSION['id']."'>"
-                            . "<input type='text' name='resposta' placeholder='Resposta' required>"
-                            . "<input type='submit'>"
-                            . "</form>"
-                            . "<button id='rep".$coments[$i]['id']."' onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
-                    
-                    $read->setDaft("texto_sub,autor");
-                    $read->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."'");
-                    $sub = $read->getResultado();
-                    for($j = 0;$j< count($sub);$j++){
-                        echo "<br><br><span class='sub_rep'> ~".$sub[$j]['autor']."~: ".$sub[$j]['texto_sub']."</span>";
-                    }
-                    echo "</div>";
-                }
-                
-                ?>
-     </div>
+     <header>        
+            <a href="../../index.html"><div class="logo"> 
+                <svg> 
+                    <symbol id="s-text"> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
+                    <g> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                    </g> 
+                </svg> 
+            </div></a>
+        
+            <div class="links">
+                <a href="../../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
+                <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
+                <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+
+                <div class="dropdown">
+                    <img class="bt-drop" style="max-width: 18px" src="../../view/imagens/t.png">
+                    <div class="c-dropdown">
+                        <a href="../minhaConta.php" class="d">MINHA CONTA</a>
+                        <a href="../sair.php" class="d">SAIR</a>
+                    </div>
+                </div>
+            </div>        
+        </header>
+
+    <div id="area">
+         <div id="esq">
+             <img src="../../view/imagens/user-aluno.png">
+            <h2><?=$nome?></h2>
+            <div id="bot">
+                <botton onclick="cursosDiv()">Meus Cursos</botton> <br>
+                <botton ><a href="../../view/catalogo.php">Mais Cursos<a></botton> 
+                            <botton onclick="forumDiv()">Fórum<a></botton> 
+            </div>
+        </div>
+        <div id="topo">
+            <h2 id="title">Fórum</h2>
+        </div>
+        <div id="cursos">
+            <?php     //listagem de todos os cursos de um determinado professor, que incluem thumb, nome e id
+
+                      for($i = 0; $i<count($cursos); $i++){
+                           echo "<div class='container' onclick='select(".$cursos[$i]['id'].")' >
+                       <img src='".$cursos[$i]['thumb']."'  alt='Thumb do Curso'> "
+                                   . "<div class='fade'><a>".$cursos[$i]['nome_curso']."</a></div></div>";
+                       }
+
+                   ?>
+        </div>
+        <div id="forum">
+            <!--listagem dos comentarios-->
+
+                   <?php
+                   for($i = 0; $i<count($coments);$i++){
+                       echo "<div class='coment'>"
+                       . "<span class='autor'><b>Aula</b>: ".$coments[$i]['nome_aula'].""
+                               . "<br>"
+                               . "<br>"
+                               ."<b>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].":</b> </span>"
+                               . "<br>"
+                               . "<span class='com'>".$coments[$i]['texto']."</span>"
+                               . "<br>"
+                               . "<form method='post' action='../insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
+                               . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
+                               . "<input type='hidden' name='autor' value='".$_SESSION['id']."'>"
+                               . "<input type='text' name='resposta' placeholder='Resposta' required>"
+                               . "<input type='submit'>"
+                               . "</form>"
+                               . "<button id='rep'".$coments[$i]['id']."' onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+
+                       $read->setDaft("texto_sub,autor");
+                       $read->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."'");
+                       $sub = $read->getResultado();
+                       for($j = 0;$j< count($sub);$j++){
+                           echo "<br><br><span class='sub_rep'> <b>~".$sub[$j]['autor']."~:</b> ".$sub[$j]['texto_sub']."</span>";
+                       }
+                       echo "</div>";
+                   }
+
+                   ?>
+        </div>
+    </div>
+     
     </BODY> 
 </HTML>

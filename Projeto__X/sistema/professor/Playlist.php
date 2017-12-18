@@ -64,7 +64,7 @@ $forms = $list->getAllForms($_SESSION['id_curso']);
             <a href="../../index.html"><div class="logo"> 
                 <svg> 
                     <symbol id="s-text"> 
-                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
                     <g> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 

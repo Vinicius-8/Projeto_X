@@ -30,6 +30,7 @@ body #cursos{
     margin-left: 50px;
     margin-top: 50px;
     float: left;
+    box-shadow: 5px 5px 10px rgb(50, 50, 50);
 }
 
 div#cursos .container{

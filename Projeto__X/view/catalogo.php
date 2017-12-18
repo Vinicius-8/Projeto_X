@@ -12,7 +12,7 @@ $cursos = $listagem->listagemParcial();
     <head>
         <meta charset="UTF-8">
         <link href="css/estilo_catalogo.css" rel="stylesheet" type="text/css"/>
-        <title>Catalogo de Cursos</title>
+        <title>Catalogo de Cursos - nect.us</title>
         <script>
             function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
                 document.write("<form method='POST' action='curso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
@@ -25,7 +25,7 @@ $cursos = $listagem->listagemParcial();
             <a href="../index.html"><div class="logo"> 
                 <svg> 
                     <symbol id="s-text"> 
-                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
                     <g> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
@@ -68,7 +68,7 @@ $cursos = $listagem->listagemParcial();
         </div>
         
         <footer>
-            <p>'nome do site' &#9400  2017<br>Desenvolvido por Vinicius Araújo e Luis Santos</p>
+            <p>nect.us &#9400  2017<br>Desenvolvido por Vinicius Araújo e Luis Santos</p>
     </footer>
     </body>
 </html>
