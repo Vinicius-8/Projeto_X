@@ -9,7 +9,7 @@ window.onload = function(){
 };
 
 function cursosDiv(){
-    title.innerHTML = 'Criar Curso';
+    title.innerHTML = 'Meus Cursos';
     divForum.style.display = 'none';
     divCurso.style.display = 'block';
 }

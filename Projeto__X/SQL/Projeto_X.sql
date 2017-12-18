@@ -79,6 +79,7 @@ foreign key(id_comentario) references comentario(id)
 );
 
 
+
 select comentario.id,texto,nome,sobrenome from comentario inner join aluno on comentario.id_aluno = aluno.idNum where id_aula = '1' order by id desc;
 
 select c.id,texto,nome,sobrenome,nome_aula from comentario c join aluno a on c.id_aluno = a.idNum join aula l on l.id = c.id_aula where id_professor = '1' order by id desc;

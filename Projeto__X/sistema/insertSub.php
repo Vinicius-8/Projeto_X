@@ -13,5 +13,4 @@ require '../model/Create.php';
 $tre = new Create();
 $aff = array('id_comentario' =>$_POST['comentid'],'texto_sub'=>$_POST['resposta'],'autor'=>$_POST['autor']);
 $tre->ExecutarCreate('sub_comentario', $aff);
-echo "opa";
 header('Location: ' . $_SERVER['HTTP_REFERER']);

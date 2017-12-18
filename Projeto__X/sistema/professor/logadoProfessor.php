@@ -190,7 +190,7 @@ $coments = $read->getResultado();
                             . "<br>"
                             . "<form method='post' action='../insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
                             . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
-                            . "<input type='hidden' name='autor' value='Professor'>"
+                            . "<input type='hidden' name='autor' value='".$_SESSION['id']."'>"
                             . "<input type='text' name='resposta' placeholder='Resposta' required>"
                             . "<input type='submit'>"
                             . "</form>"
