@@ -53,7 +53,7 @@ $coments = $r->getResultado();
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>Video</title>
+        <title>Video - nect.us</title>
         <link rel="stylesheet" href="estilo_video.css"> 
         <script>
             function turn(num){
@@ -68,7 +68,7 @@ $coments = $r->getResultado();
             <a href="index.php"><div class="logo"> 
                 <svg> 
                     <symbol id="s-text"> 
-                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
                     <g> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
@@ -106,10 +106,10 @@ $coments = $r->getResultado();
         
         ?>
             <form method="POST" action="insertComent.php">
-                <input type="text" name="coment" required>
+                <input type="text" placeholder="Insira seu comentário aqui" name="coment" id="comentAluno" required>
                 <input type="hidden" name="id_aula" value="<?=$_GET['i']?>">
                 <input type="hidden" name="prof" value="<?=$_idprofessor[0]['id_professor']?>">
-                <input type="submit">
+                <input type="submit" id="enviaA">
             </form>
             <?php
         }//
@@ -126,7 +126,7 @@ $coments = $r->getResultado();
                 <?php
                 for($i = 0; $i<count($coments);$i++){
                     echo "<div class='coment'>"
-                    . "<span class='autor'>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].": </span>"
+                    . "<span class='autor'>"."<b>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].":</b> </span>"
                             . "<br>"
                             . "<span class='com'>".$coments[$i]['texto']."</span>"
                             . "<br>"
@@ -136,13 +136,13 @@ $coments = $r->getResultado();
                             . "<input type='text' name='resposta' placeholder='Resposta' required>"
                             . "<input type='submit'>"
                             . "</form>"
-                            . "<button id='rep".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+                            . "<button id='rep'".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
                     
                     $r->setDaft("texto_sub,autor");
                     $r->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."' order by id desc");
                     $sub = $r->getResultado();
                     for($j = 0;$j< count($sub);$j++){
-                        echo "<br><br><span class='sub_rep'> ~".$sub[$j]['autor']."~: ".$sub[$j]['texto_sub']."</span>";
+                        echo "<br><br><span class='sub_rep'> <b>~".$sub[$j]['autor']."~:</b> ".$sub[$j]['texto_sub']."</span>";
                     }
                     echo "</div>";
                 }

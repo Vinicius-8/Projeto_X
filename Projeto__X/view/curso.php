@@ -26,7 +26,7 @@ $forms = $lista->getAllForms($idCurso); //pegando todos os formulários
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Curso</title>
+        <title>Curso - nect.us</title>
         <link href="css/estilo_curso.css" rel="stylesheet" type="text/css"/>
          <script>
             function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
@@ -49,7 +49,7 @@ $forms = $lista->getAllForms($idCurso); //pegando todos os formulários
             <a href="../index.html"><div class="logo"> 
                 <svg> 
                     <symbol id="s-text"> 
-                        <text text-anchor="middle" x="50%" y="80%">generico</text> </symbol> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
                     <g> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 

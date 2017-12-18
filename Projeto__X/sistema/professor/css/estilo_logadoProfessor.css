@@ -100,24 +100,7 @@ div#topo h2{
     margin-left: 10%;
 }
 
-.sair {
-    color: white;
-    margin: 1.5% 2% 1% 1%;
-    padding: 1%;
-    display: inline-block;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
-    float: right;
-}
 
-.sair a {
-    text-decoration: none;
-    color: white;
-}
-
-.sair:hover{
-    border-bottom: 2px solid white;
-}
 
 /*Content*/
 div#content {
@@ -228,6 +211,66 @@ div#criar #form input[type=submit] {
 
 div#criar #form input[type=submit]:hover {
     background-color: rgba(250, 250, 250, 0.2);
+}
+
+/*Forum*/
+#forum {
+    display:block;
+    position: relative;
+    font-family: 'Quicksand', sans-serif;
+    width: 80%;
+    height:90%;     
+    float:left;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#forum .coment {
+    display:block;
+    position: relative;
+    color: whitesmoke;
+    width: 99%;
+    min-height: 100px;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-bottom: 1%; 
+    height: auto;
+    float: left;
+    border-bottom:1px solid white;
+}
+
+#forum .autor {
+    margin: 1%;
+}
+
+#forum .coment .com{
+    display: block;
+    position: relative;
+    width: 90%;
+    height: auto;
+    padding: 1%;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+}
+
+#forum .coment .sub_rep{
+    float:left;
+    clear:left;
+    padding-left: 2%;
+    margin-left: 10%;
+    margin-bottom: 1%;
+    border-left: 2px solid white;
+}
+
+#rep {
+    padding: 0.5%;
+    margin: 1%;
+    background-color: whitesmoke;
+    color: black;
+    border: 1px solid white;
+    cursor: pointer; 
+}
+#rep:hover {
+    background-color: rgba(250,250,250,0.8);
 }
 
 /* ------------- Topo ------------- */
@@ -347,27 +390,4 @@ header {
 /*fim - logo do site*/
 
 /* ------------- Fim do topo ------------- */
-/*Forum*/
-#forum {
-    position: relative;
-}
-#forum .coment {
-    position: relative;
-    left: 20px;
-    top: 20px;
-    margin: 20px;
-    background-color: whitesmoke;
-    width: 700px;
-    min-height: 100px;   
-    float: left;
-}
 
-#forum .coment .com{
-    margin-left: 20px;
-    background-color: green;
-}
-#forum .coment .sub_rep{
-    float:right;
-    clear: right;
-    background-color: red;
-}
