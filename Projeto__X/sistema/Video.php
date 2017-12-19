@@ -136,7 +136,7 @@ $coments = $r->getResultado();
                             . "<input type='text' name='resposta' placeholder='Resposta' required>"
                             . "<input type='submit'>"
                             . "</form>"
-                            . "<button id='rep'".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+                            . "<button id='rep".$coments[$i]['id']."' onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
                     
                     $r->setDaft("texto_sub,autor");
                     $r->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."' order by id desc");

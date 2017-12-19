@@ -79,6 +79,7 @@ $coments = $read->getResultado();
                 document.getElementById('rep'+num).style.display ='none';
                 
             }
+            
         </script>
         
     </head>
@@ -192,7 +193,7 @@ $coments = $read->getResultado();
                             . "<input type='text' name='resposta' placeholder='Resposta' required>"
                             . "<input type='submit'>"
                             . "</form>"
-                            . "<button id='rep'".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder</button>";
+                            . "<button id='rep".$coments[$i]['id']."' onclick='turn(".$coments[$i]['id'].")''>Responder</button>";
                     
                     $read->setDaft("texto_sub,autor");
                     $read->ExecutarRead('sub_comentario',"where id_comentario = '".$coments[$i]['id']."' ");
@@ -202,7 +203,7 @@ $coments = $read->getResultado();
                     }
                     echo "</div>";
                 }
-                
+                ///onclick='turn(".$coments[$i]['id'].")'
                 ?>
 
             </div>

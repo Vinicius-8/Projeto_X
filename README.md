@@ -1,2 +1,2 @@
-# Projeto_X
-Projeto do tipo AVA 
+# Nect.us
+Sistema de virtual aprendizagem  
