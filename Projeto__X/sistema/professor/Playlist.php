@@ -23,6 +23,7 @@ $forms = $list->getAllForms($_SESSION['id_curso']);
     <head>
         
         <meta charset=”UTF-8”>
+        <link href="../../view/imagens/logo_tit.png" rel="shortcut icon">
         <link href="css/estilo_playlist.css" rel="stylesheet" type="text/css"/>
         <title><?=$list->getNome()?></title>
         <script>

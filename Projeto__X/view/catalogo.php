@@ -11,6 +11,7 @@ $cursos = $listagem->listagemParcial();
 <html>
     <head>
         <meta charset="UTF-8">
+        <link href="imagens/logo_tit.png" rel="shortcut icon">
         <link href="css/estilo_catalogo.css" rel="stylesheet" type="text/css"/>
         <title>Catalogo de Cursos - nect.us</title>
         <script>

@@ -47,17 +47,42 @@ if (count($link_form)<2) {                  //adição do http caso não exista
 <html>
     <head>
         <meta charset="UTF-8">
+        
         <title>Formulario</title>
-        <style>
-            iframe {
-                width: 1100px;
-                height: 500px;
-                margin-left: 100px;
-                margin-top: 20px;
-            }
-        </style>
+        <link href="../view/imagens/logo_tit.png" rel="shortcut icon">
+        <link href="estilo_formulario.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        
+        <header>        
+            <a href="index.php"><div class="logo"> 
+                <svg> 
+                    <symbol id="s-text"> 
+                        <text text-anchor="middle" x="50%" y="80%">nect.us</text> </symbol> 
+                    <g> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-text" class="titulo_text"></use> 
+                    </g> 
+                </svg> 
+            </div></a>
+        
+            <div class="links">
+                <a href="../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
+                <a href="../view/faleCon.html" class="topheader">FALE CONOSCO</a>
+                <a href="../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+                <div class="dropdown">
+                    <img class="bt-drop" style="max-width: 18px" src="../SQL/../view/imagens/t.png">
+                    <div class="c-dropdown">
+                        <a href="minhaConta.php" class="d">MINHA CONTA</a>
+                        <a href="sair.php" class="d">SAIR</a>
+                    </div>
+                </div>
+            </div>        
+        </header>
+        
         <iframe src="<?=$link_form?>"></iframe>
     </body>
 </html>
