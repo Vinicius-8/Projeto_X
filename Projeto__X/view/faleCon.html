@@ -6,6 +6,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/estilo_fsp.css">
+        <script>
+            window.onload = function(){
+                var a = document.querySelector("#fale");
+                a.style.borderBottom = "3px solid #ffffff";
+                a.style.paddingBottom = "12px";
+            }
+        </script>
     </head>
 
     <body>
@@ -26,7 +33,7 @@
         
         <div class="links">
             <a href="sobreNos.html" class="topheader">SOBRE NÓS</a>
-            <a href="faleCon.html" class="topheader">FALE CONOSCO</a>
+            <a href="faleCon.html" class="topheader" id="fale">FALE CONOSCO</a>
             <a href="pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
             <div class="dropdown">
                 <img class="bt-drop" style="max-width: 18px" src="imagens/t.png">
