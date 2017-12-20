@@ -93,7 +93,12 @@ class Lista {
         $create = new Create();
         $create->ExecutarCreate('aula',$datos);
     }
-    
+    /**
+     * O metodo insertForm, insere um formulario fornecida pelo usuário no BD
+     * @param type $nome_form Nome do formulario
+     * @param type $url Link do formulario
+     * @param type $id_curso id do formulario correspondente ao curso
+     */
     public function insertForm($nome_form,$url,$id_curso) {
         $deta = array('nome_form'=>$nome_form,'url'=>$url,'id_curso'=>$id_curso);
         $create = new Create();
