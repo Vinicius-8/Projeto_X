@@ -49,6 +49,7 @@ $coments = $read->getResultado();
 <html lang="pt-br"> 
  <head> 
   <TITLE>Área do Aluno</TITLE> 
+  <link href="../../view/imagens/logo_tit.png" rel="shortcut icon">
   <link href="css/estilo_logadoAluno.css" rel="stylesheet" type="text/css"/>
   <style>
       #forum .coment .resp  {

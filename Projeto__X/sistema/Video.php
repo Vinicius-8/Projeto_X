@@ -54,6 +54,7 @@ $coments = $r->getResultado();
     <head>
         <meta charset="UTF-8">
         <title>Video - nect.us</title>
+        <link href="../view/imagens/logo_tit.png" rel="shortcut icon">
         <link rel="stylesheet" href="estilo_video.css"> 
         <script>
             function turn(num){

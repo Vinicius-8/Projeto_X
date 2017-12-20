@@ -27,6 +27,7 @@ $forms = $lista->getAllForms($idCurso); //pegando todos os formulários
     <head>
         <meta charset="UTF-8">
         <title>Curso - nect.us</title>
+        <link href="imagens/logo_tit.png" rel="shortcut icon">
         <link href="css/estilo_curso.css" rel="stylesheet" type="text/css"/>
          <script>
             function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios

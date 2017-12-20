@@ -60,6 +60,7 @@ $coments = $read->getResultado();
 <html lang="pt-br">
     <head>
         <title><?= $nome?></title>
+        <link href="../../view/imagens/logo_tit.png" rel="shortcut icon">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/estilo_logadoProfessor.css"/>
