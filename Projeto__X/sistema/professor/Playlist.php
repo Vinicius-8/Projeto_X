@@ -149,7 +149,7 @@ $forms = $list->getAllForms($_SESSION['id_curso']);
                 <h2>Formulários: </h2>
                 
                 <!--inserir Formulário-->
-                    <form method="POST" action="InsertForm.php" id="elemento">
+                    <form method="POST" action="insertForm.php" id="elemento">
                         <span id="tito">Novo Formulário: </span> <input style="padding: 1%; font-size: 20px" type="text" name="new" placeholder="Nome do formulário" required> 
                         <input style="padding: 1%; font-size: 20px" type="text" name="url" placeholder="Link do formulário" required>
                     <button id="btn-form" onclick="adicionar()">Adicionar</button>
@@ -157,7 +157,7 @@ $forms = $list->getAllForms($_SESSION['id_curso']);
                 
                 <?php                   //Mostrando todas formularios já criadas
                             for($i=0;$i<count($forms);$i++){
-                                echo "<div class='um' value='".$forms[$i]['id']."'> <span class='title'><a href='".$forms[$i]['url']."'>".$forms[$i]['nome_form']."</a><span></div>";
+                                echo "<div class='um' value='".$forms[$i]['id']."'> <span class='title'><a href='../formulario.php?f=".$forms[$i]['url']."'>".$forms[$i]['nome_form']."</a><span></div>";
                             }
                 ?>
             </div>

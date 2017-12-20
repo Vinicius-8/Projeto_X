@@ -1,7 +1,7 @@
 <?php
 session_start();
 //testar se ele já estiver cadastrado
-if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação de existencia de variavel
+if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno']) or (!$_SESSION['aluno'])){
     header("location:../../view/attention.html?11");
     die();
 }

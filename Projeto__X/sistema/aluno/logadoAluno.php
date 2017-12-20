@@ -58,7 +58,7 @@ $coments = $read->getResultado();
   <script src="script/script_logadoAluno.js"></script>
   <script>
       function select(idCurso){       //metodo que abre o curso correspondente ao clicado, enviando atraves de um formulario os dados necessarios
-                document.write("<form method='POST' action='../../view/Curso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
+                document.write("<form method='POST' action='../../view/curso.php' id='mular' style='display:none'><input type='text' name='cursoid' value='"+idCurso +"'> </form>");
                 document.getElementById('mular').submit();  //submit do formulario
             }
             function turn(num){

@@ -115,8 +115,10 @@ div#cursos .container{
 }
 
 div#cursos .container img {
-    max-width: 270px;
-    max-height: 180px;    
+     max-width: 270px;
+    min-height: 180px;    
+    background-size: cover;
+    background-position: center;     
 }
 
 div#cursos .container .fade{
