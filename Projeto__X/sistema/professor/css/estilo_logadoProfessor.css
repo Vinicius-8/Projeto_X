@@ -261,15 +261,26 @@ div#criar #form input[type=submit]:hover {
     border-left: 2px solid white;
 }
 
-#rep {
+.coment button, input[type="submit"] {
     padding: 0.5%;
     margin: 1%;
     background-color: whitesmoke;
     color: black;
     border: 1px solid white;
     cursor: pointer; 
+    margin-left: 1%;
 }
-#rep:hover {
+
+.coment input[type="text"] {
+    background: none;
+    border:none;
+    border-bottom: 2px solid white;
+    height: 35px;
+    color: white;
+    margin-left: 1%;
+}
+
+.coment button:hover, input[type="submit"]:hover {
     background-color: rgba(250,250,250,0.8);
 }
 

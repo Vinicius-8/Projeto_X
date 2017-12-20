@@ -150,9 +150,9 @@ $forms = $list->getAllForms($_SESSION['id_curso']);
                 
                 <!--inserir Formulário-->
                     <form method="POST" action="InsertForm.php" id="elemento">
-                        <span id="tito">Novo Formulário: </span> <input type="text" name="new" placeholder="Nome do formulário" required> 
-                        <input type="text" name="url" placeholder="Link do formulário" required>
-                    <button onclick="adicionar()">Adicionar</button>
+                        <span id="tito">Novo Formulário: </span> <input style="padding: 1%; font-size: 20px" type="text" name="new" placeholder="Nome do formulário" required> 
+                        <input style="padding: 1%; font-size: 20px" type="text" name="url" placeholder="Link do formulário" required>
+                    <button id="btn-form" onclick="adicionar()">Adicionar</button>
                     </form>
                 
                 <?php                   //Mostrando todas formularios já criadas
