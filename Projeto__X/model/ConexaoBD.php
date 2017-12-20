@@ -10,7 +10,7 @@
  * acesse: http://php.net/manual/pt_BR/ref.pdo-mysql.connection.php
  * @copyright (c) 17/10/2017, Iury Gomes - IFTO
  * @author Iury Gomes de Oliveira 
- * @email iury.oliveira@ifto.edu.br
+ * @email iury.oliveira@ifto.edu.br 
  * @version 1.0 
  */
 class ConexaoBD {

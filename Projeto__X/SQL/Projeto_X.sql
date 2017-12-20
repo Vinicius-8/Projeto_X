@@ -79,3 +79,5 @@ autor text not null,
 primary key(id),
 foreign key(id_comentario) references comentario(id)
 );
+
+

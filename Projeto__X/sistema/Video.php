@@ -80,9 +80,9 @@ $coments = $r->getResultado();
             </div></a>
         
             <div class="links">
-                <a href="../../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
-                <a href="../../view/faleCon.html" class="topheader">FALE CONOSCO</a>
-                <a href="../../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
+                <a href="../view/sobreNos.html" class="topheader">SOBRE NÓS</a>
+                <a href="../view/faleCon.html" class="topheader">FALE CONOSCO</a>
+                <a href="../view/pergFeq.html" class="topheader">PERGUNTAS FREQUENTES</a>
                 <div class="dropdown">
                     <img class="bt-drop" style="max-width: 18px" src="../SQL/../view/imagens/t.png">
                     <div class="c-dropdown">

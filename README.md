@@ -1,2 +1,2 @@
 # Nect.us
-Sistema de virtual aprendizagem  
+Sistema de virtual de aprendizagem  

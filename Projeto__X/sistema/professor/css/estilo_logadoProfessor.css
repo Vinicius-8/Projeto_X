@@ -125,7 +125,7 @@ div#content .container{
 
 div#content .container img {
     max-width: 270px;
-    max-height: 180px;    
+    min-height: 180px;    
 }
 
 div#content .container .fade{

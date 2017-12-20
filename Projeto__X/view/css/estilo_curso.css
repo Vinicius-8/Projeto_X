@@ -62,6 +62,7 @@ div#esquer #thumb {
     width: 70%;
     height: 200px;
     margin: 5% auto;
+    background-size: cover;
 }
 
 button {

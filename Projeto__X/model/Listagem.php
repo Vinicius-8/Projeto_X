@@ -17,7 +17,7 @@ class Listagem {
      */
     private $nome,$thumb;
     private $preco,$aulas,$desc,$nomeAutor,$sobrenome,$nasc;
-    private $form,$alunos; //-----------posteriormente
+    private $form,$alunos; 
     
     public function __construct() {
         $this->read = new Read();

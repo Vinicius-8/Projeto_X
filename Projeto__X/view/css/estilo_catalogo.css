@@ -46,7 +46,7 @@ div#cursos .container{
 
 div#cursos .container img {
     max-width: 270px;
-    max-height: 180px;
+    min-height: 180px;
     
 }
 

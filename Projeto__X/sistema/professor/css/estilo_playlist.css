@@ -40,9 +40,11 @@ div#esquerda {
 
 div#esquerda #thumb {
     background-color: #2F5778;
-    width: 90%;
-    height: 200px;
     margin: 5% auto;
+    max-width: 90%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;    
 }
 
 div#esquerda h2{
