@@ -21,7 +21,7 @@
                 var titlem = document.getElementById("t");
                 var descm = document.getElementById("d");
                 
-                var url = document.baseURI;
+                var url = window.location.href;
                 var valor = url.indexOf('?')+1;
                 var url_cortada = url.slice(valor);
            
@@ -119,6 +119,7 @@
                            descm.innerHTML = "Você não comprou essa aula!"; 
                            window.setTimeout("location.href='curso.php'", 3000);   
                            break;
+                           
                     }
                 }
                 

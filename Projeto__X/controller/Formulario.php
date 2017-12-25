@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_POST)) {
     require '../include/Config.inc.php';
     //verificar se o id  já está cadastrado
@@ -59,7 +58,7 @@ if (isset($_POST)) {
     
     //objeto create
     $create = new Create();
-    
+    session_start();
     //Condicional de [1]Aluno/[2]Professor
     if ($tipo) {
         $aluno = array('id'=> $id, 'nome'=> $nome, 'sobrenome'=> $sobrenome, 'data_nasc'=> $nasc, 'email'=> $email, 'telefone'=> $telefone, 'senha'=> md5($senha));

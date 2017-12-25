@@ -10,13 +10,16 @@ require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
 require '../../model/Lista.php';
 
-$list = new Lista($_SESSION['idNum'],true);          //objeto lista, com o id do professor
-$list->getData( $_SESSION['id_curso']);         //pegando dados correspondentes ao id do ursos
-$aulas = $list->getAllAulas($_SESSION['id_curso']);     //pegando todas as aulas corespondentes ao curso 
+$idNumUso = $_SESSION['idNum'];
+$idCursoPlaylist = $_SESSION['id_curso'];
+
+$list = new Lista($idNumUso,true);          //objeto lista, com o id do professor
+$list->getData( $idCursoPlaylist);         //pegando dados correspondentes ao id do ursos
+$aulas = $list->getAllAulas($idCursoPlaylist);     //pegando todas as aulas corespondentes ao curso 
 for($i = 0;$i<count($aulas);$i++){
     $aulas[$i]['url'] = explode("=", $aulas[$i]['url'])[1];//separando o que interessa na url
 }
-$forms = $list->getAllForms($_SESSION['id_curso']);
+$forms = $list->getAllForms($idCursoPlaylist);
 ?>
 <!DOCTYPE HTML>
 <html lang=”pt-br”>

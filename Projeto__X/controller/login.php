@@ -57,14 +57,18 @@ if (isset( $_POST['id']) and isset($_POST['senha'])) {
             echo "<script>window.location.href = '../view/attention.html?2';</script>";
             exit();
         }
+        
     }else{
         //usuário não cadastrado
         echo "<script>window.location.href = '../view/attention.html?2';</script>";   
         exit();
+        echo "oi2";
     }
+    
     }else{
         //login vazio
         echo "<script>window.location.href = '../view/attention.html?6';</script>";
         exit();
     }
+    
 exit();

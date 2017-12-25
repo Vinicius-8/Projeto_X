@@ -21,20 +21,15 @@ $read->setDaft('idNum');    //idNum é o tipo de informação que quero capturar
 
 $read->ExecutarRead('aluno',"where id = '{$_SESSION['id']}'"); //session 'id' é o nickname do aluno na tabela aluno
 
-try {
-    $_SESSION['idNum'] = $read->getResultado()[0]['idNum']; //armazenando o id do aluno na variavel de sessao
+
+$_SESSION['idNum'] = $read->getResultado()[0]['idNum']; //armazenando o id do aluno na variavel de sessao
     
-    //capturando o nome do professor
-    $read->setDaft('nome');     //tipo de informação que quero capturar
+ //capturando o nome do professor
+$read->setDaft('nome');     //tipo de informação que quero capturar
     
-    $read->ExecutarRead('aluno',"where idNum = '{$_SESSION['idNum']}'");    //tabela onde quero capturar essa info.
+$read->ExecutarRead('aluno',"where idNum = '{$_SESSION['idNum']}'");    //tabela onde quero capturar essa info.
     
-    $nome = $read->getResultado()[0]['nome']; //armazenando a informação capturada
-    
-} catch (Exception $exc) {
-    echo $exc->getTraceAsString();
-    die();
-}
+$nome = $read->getResultado()[0]['nome']; //armazenando a informação capturada
 
 $lis = new Lista( $_SESSION['idNum'],false);
 $cursos = $lis->getAllCursos();

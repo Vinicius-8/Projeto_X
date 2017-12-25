@@ -103,8 +103,6 @@ $coments = $r->getResultado();
         
         <?php 
         if ($_SESSION['aluno']) {
-            
-        
         ?>
             <form method="POST" action="insertComent.php">
                 <input type="text" placeholder="Insira seu comentário aqui" name="coment" id="comentAluno" required>
@@ -112,19 +110,11 @@ $coments = $r->getResultado();
                 <input type="hidden" name="prof" value="<?=$_idprofessor[0]['id_professor']?>">
                 <input type="submit" id="enviaA">
             </form>
-            <?php
-        }//
-           //     for($i = 0; $i<count($coments);$i++){
-             //       echo "<div class='coment'>"
-               //     . "<span class='autor'>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].":</span><br><span class='com'>".$coments[$i]['texto']."</span><br>"
-                 //           . "<form method='post' action='insertSub.php' class='resp' id='resp".$coments[$i]['id']."'>"
-                   //         . "<input type='hidden' name='comentid' value='".$coments[$i]['id']."'>"
-                     //       . "<input type='text' name='resposta' placeholdrequired><input type='hidden' name='autor' value='".$coments[$i]['nome']." ".$coments[$i]['sobrenome']."'><input type='submit'></form><button id='rep".$coments[$i]['id']."'onclick='turn(".$coments[$i]['id'].")'>Responder<button/></div>";
-               // }
-            ?>
+            
             <!--listagem dos comentarios-->
                 
                 <?php
+                }
                 for($i = 0; $i<count($coments);$i++){
                     echo "<div class='coment'>"
                     . "<span class='autor'>"."<b>".$coments[$i]['nome']." ". $coments[$i]['sobrenome'].":</b> </span>"

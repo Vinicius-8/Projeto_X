@@ -7,7 +7,6 @@ if (!isset($_SESSION['logado']) or !isset($_SESSION['aluno'])){//verificação d
     header("location:../../view/login.html");
     die();
 }
-
 require '../../include/Defines.php';
 require '../../model/ConexaoBD.php';
 require '../../model/Read.php';
@@ -20,25 +19,20 @@ $read = new Read();
 
 $read->setDaft('idNum');    //idNum é o tipo de informação que quero capturar
 
-$read->ExecutarRead('professor',"where id = '{$_SESSION['id']}'"); //session 'id' é o nickname do professor na tabela professor
+$id_nick = $_SESSION['id'];//id_nick é o mesmo que o $_SESSION['id'] porem não é superglobal
 
-try {
-    $_SESSION['idNum'] = $read->getResultado()[0]['idNum']; //armazenando o id do professor na variavel de sessao
+$read->ExecutarRead('professor',"where id = '{$id_nick}'"); //session 'id' é o nickname do professor na tabela professor
+
+$_SESSION['idNum'] = $idNumUso  = $read->getResultado()[0]['idNum']; //armazenando o id do professor na variavel de sessao
+//capturando o nome do professor
+$read->setDaft('nome');     //tipo de informação que quero capturar
+
+$read->ExecutarRead('professor',"where idNum = '{$idNumUso}'");    //tabela onde quero capturar essa info.
     
-    //capturando o nome do professor
-    $read->setDaft('nome');     //tipo de informação que quero capturar
-    
-    $read->ExecutarRead('professor',"where idNum = '{$_SESSION['idNum']}'");    //tabela onde quero capturar essa info.
-    
-    $nome = $read->getResultado()[0]['nome']; //armazenando a informação capturada
-    
-} catch (Exception $exc) {
-    echo $exc->getTraceAsString();
-    die();
-}
+$nome = $read->getResultado()[0]['nome']; //armazenando a informação capturada
 
 //----listagem dos cursos--------
-$lista = new Lista($_SESSION['idNum'],true);//objeto lista
+$lista = new Lista($idNumUso,true);//objeto lista
 //capturando os nomes dos cursos do professor
 $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
         
@@ -52,7 +46,7 @@ $cursos = $lista->getAllCursos();   //armazenando todos os cursos capturados
 
 //capturando os comentários
 $read->setDaft('c.id,texto,nome,sobrenome,nome_aula');
-$read->ExecutarRead('comentario',"c join aluno a on c.id_aluno = a.idNum join aula l on l.id = c.id_aula where id_professor = '{$_SESSION['idNum']}'order by id desc");
+$read->ExecutarRead('comentario',"c join aluno a on c.id_aluno = a.idNum join aula l on l.id = c.id_aula where id_professor = '{$idNumUso}'order by id desc");
 $coments = $read->getResultado();
 
 ?>
@@ -204,7 +198,7 @@ $coments = $read->getResultado();
                     }
                     echo "</div>";
                 }
-                ///onclick='turn(".$coments[$i]['id'].")'
+                
                 ?>
 
             </div>
